@@ -2,7 +2,7 @@
     "assets": {
         "areaTilemap": {
             "type": "tilemap",
-            "source": "maps/area-1a-map-old.json"
+            "source": "maps/area-1a-map.json"
         }
     },
     "map": {

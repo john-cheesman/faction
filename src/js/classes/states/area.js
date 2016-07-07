@@ -58,6 +58,10 @@ export class Area extends Phaser.State {
         }
 
         console.log(this.groups);
+        console.log(this.groups.enemies.children[0].currentStats, this.groups.enemies.children[0].currentStats.defence,
+            this.groups.enemies.children[0].currentStats.evasion,
+            this.groups.enemies.children[0].currentStats.accuracy,
+            this.groups.enemies.children[0].currentStats.speed);
 
         this.game.controls = {};
 

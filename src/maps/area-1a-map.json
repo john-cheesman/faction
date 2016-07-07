@@ -74,15 +74,15 @@
                     {
                      "direction":"down",
                      "group":"player",
-                     "level":"4",
-                     "texture":"shadowSpritesheet"
+                     "texture":"shadowSpritesheet",
+                     "xp":500
                     },
                  "propertytypes":
                     {
                      "direction":"string",
                      "group":"string",
-                     "level":"string",
-                     "texture":"string"
+                     "texture":"string",
+                     "xp":"int"
                     },
                  "rotation":0,
                  "type":"Player",
@@ -100,13 +100,15 @@
                     {
                      "direction":"down",
                      "group":"enemies",
-                     "texture":"shadowSpritesheet"
+                     "texture":"shadowSpritesheet",
+                     "xp":1000
                     },
                  "propertytypes":
                     {
                      "direction":"string",
                      "group":"string",
-                     "texture":"string"
+                     "texture":"string",
+                     "xp":"int"
                     },
                  "rotation":0,
                  "type":"Shadow",
