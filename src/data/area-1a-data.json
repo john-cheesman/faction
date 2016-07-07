@@ -1,0 +1,20 @@
+{
+    "assets": {
+        "areaTilemap": {
+            "type": "tilemap",
+            "source": "maps/area-1a-map.json"
+        }
+    },
+    "map": {
+        "key": "areaTilemap",
+        "tilesetImage": {
+            "name": "tiny_32",
+            "key": "mapTileset"
+        }
+    },
+    "groups": [
+        "player",
+        "enemies",
+        "chests"
+    ]
+}

@@ -17,3 +17,7 @@ gulp.task('clean-images', function() {
 gulp.task('clean-maps', function() {
     return del(config.maps.dest);
 });
+
+gulp.task('clean-data', function() {
+    return del(config.data.dest);
+});

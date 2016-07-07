@@ -30,7 +30,7 @@ export class Menu {
 
             option = this.options[i];
 
-            menuItem = new MenuItem(this.game, this.x, (((i + 1) * (dimensions.tileSize / 2)) + this.y), option.text, option.targetState, option.params);
+            menuItem = new MenuItem(this.game, this.x, (((i + 1) * (dimensions.tileSize / 2)) + this.y), option.text, option.callback);
 
             this.menuItems.push(menuItem);
         }

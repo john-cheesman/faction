@@ -8,4 +8,5 @@ gulp.task('watch', function() {
     gulp.watch(config.scripts.watch, ['scripts']);
     gulp.watch(config.images.watch, ['images']);
     gulp.watch(config.maps.watch, ['maps']);
+    gulp.watch(config.data.watch, ['data']);
 });

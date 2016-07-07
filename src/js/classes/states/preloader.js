@@ -1,24 +1,44 @@
 import {dimensions, sprites, animations} from '../../config';
 
 export class Preloader extends Phaser.State {
-    constructor(game) {
-        super(game);
+    init(dataObject, nextState) {
+        this.dataObject = dataObject;
+        this.nextState = nextState;
     }
 
     preload() {
-        let spinner;
+        let assets,
+            assetLoader,
+            assetKey,
+            asset;
 
-        spinner = this.game.add.sprite((dimensions.gameWidth / 2), (dimensions.gameHeight / 2), sprites.spinner.key);
+        assets = this.dataObject.assets;
 
-        spinner.anchor.setTo(0.5);
+        for (assetKey in assets) {
+            if (assets.hasOwnProperty(assetKey)) {
+                asset = assets[assetKey];
 
-        spinner.animations.add('spin', animations.spinner.spin, 10, true);
-        spinner.animations.play('spin');
+                switch (asset.type) {
+                    case 'image':
+                        this.load.image(assetKey, asset.source);
+                        break;
 
-        this.game.load.spritesheet(sprites.tileSet.key, sprites.tileSet.path, dimensions.tileSize, dimensions.tileSize, 254);
+                    case 'spritesheet':
+                        this.load.spritesheet(assetKey, asset.source, asset.frameWidth, asset.frameHeight, asset.frames, asset.margin, asset.spacing);
+                        break;
+
+                    case 'tilemap':
+                        this.load.tilemap(assetKey, asset.source, null, Phaser.Tilemap.TILED_JSON);
+                        break;
+
+                    default:
+                        console.error(`Unknown asset type: ${asset.type}`);
+                }
+            }
+        }
     }
 
     create() {
-        this.state.start('MainMenu');
+        this.state.start(this.nextState, true, false, this.dataObject);
     }
 }

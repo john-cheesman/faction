@@ -16,11 +16,10 @@ textStyle = {
 }
 
 export class MenuItem extends Phaser.Text {
-    constructor(game, x, y, text, targetState, params = null, focused = false) {
+    constructor(game, x, y, text, callback = null, focused = false) {
         super(game, x, y, text, textStyle.default);
 
-        this.targetState = targetState;
-        this.params = params;
+        this.callback = callback;
         this.focused = focused;
 
         this.game.world.addChild(this);
@@ -37,13 +36,8 @@ export class MenuItem extends Phaser.Text {
     }
 
     navigate() {
-        if (this.targetState) {
-            if (this.params) {
-                this.game.state.start(this.targetState, true, false, this.params);
-            }
-            else {
-                this.game.state.start(this.targetState);
-            }
+        if (this.callback) {
+            this.callback();
         }
     }
 }

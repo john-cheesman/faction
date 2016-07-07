@@ -4,42 +4,25 @@ const dimensions = {
     gameHeight: 288
 };
 
-const sprites = {
-    tileSet: {
-        name: 'tiny32',
-        key: 'map',
-        path: '/images/tiny32.png'
-    },
-    spinner: {
-        name: 'pacman',
-        key: 'spinner',
-        path: '/images/pacman.png'
-    }
-}
-
 const animations = {
-    player: {
+    person: {
         walk: {
-            up: [180, 179, 181, 179],
-            down: [132, 131, 133, 131],
-            left: [148, 147, 149, 147],
-            right: [164, 163, 165, 163]
-        }
-    },
-    ghost: {
-        float: {
-            up: [246, 247, 246, 248],
-            down: [198, 199, 198, 200],
-            left: [214, 215, 214, 216],
-            right: [230, 231, 230, 232]
-        }
-    },
-    skeleton: {
-        walk: {
-            up: [182, 183, 182, 184],
-            down: [134, 135, 134, 136],
-            left: [150, 151, 150, 152],
-            right: [166, 167, 166, 168]
+            up: [0, 1, 2, 1],
+            right: [10, 11, 12, 11],
+            down: [20, 21, 22, 21],
+            left: [30, 31, 32, 31]
+        },
+        attack: {
+            up: [3, 4, 5, 5, 1, 6],
+            right: [13, 14, 15, 15, 11, 16],
+            down: [23, 24, 25, 25, 21, 26],
+            left: [33, 34, 35, 35, 31, 36]
+        },
+        cast: {
+            up: [7, 8, 9],
+            right: [17, 18, 19],
+            down: [27, 28, 29],
+            left: [37, 38, 39]
         }
     },
     fire: {
@@ -65,37 +48,13 @@ const animations = {
 }
 
 const frames = {
-    player: {
-        up: 179,
-        down: 131,
-        left: 147,
-        right: 163,
-        dead: 186
-    },
-    spikes: {
-        disabled: 157
-    },
-    gold: 153,
-    gems: 154
-}
-
-const levelData = [
-    {
-        levelID: 1,
-        gems: 1,
-        gold: 0
-    },
-    {
-        levelID: 2,
-        gems: 1,
-        gold: 5
-    },
-    {
-        levelID: 3,
-        gems: 1,
-        gold: 10
+    person: {
+        up: 1,
+        right: 11,
+        down: 21,
+        left: 31
     }
-];
+}
 
 const playerSpeed = 120;
 
@@ -105,4 +64,4 @@ const colours = {
     blue: 0x597dce
 };
 
-export { dimensions, sprites, animations, frames, levelData, playerSpeed, colours }
+export { dimensions, animations, frames, playerSpeed, colours }

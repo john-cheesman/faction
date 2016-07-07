@@ -18,6 +18,11 @@ module.exports = {
         src: './src/maps/**/*.json',
         dest: './web/maps'
     },
+    data: {
+        watch: './src/data/**/*.json',
+        src: './src/data/**/*.json',
+        dest: './web/data'
+    },
     serve: {
         base: './web',
         port: 8080

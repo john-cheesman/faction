@@ -1,5 +1,6 @@
 import { Boot } from './states/boot';
 import { Preloader } from './states/preloader';
+import { Area } from './states/area';
 import { GameOver } from './states/game-over';
 import { MainMenu } from './states/main-menu';
 import { Utility } from './utility';
@@ -13,10 +14,12 @@ export class Game extends Phaser.Game {
 
         this.state.add('Preloader', Preloader);
 
+        this.state.add('Area', Area);
+
         this.state.add('MainMenu', MainMenu);
 
         this.state.add('GameOver', GameOver);
 
-        this.state.start('Boot');
+        this.state.start('Boot', true, false, 'data/game-data.json', 'MainMenu');
     }
 };

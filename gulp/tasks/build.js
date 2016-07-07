@@ -5,5 +5,6 @@ gulp = require('gulp');
 gulp.task('build', [
     'scripts',
     'images',
-    'maps'
+    'maps',
+    'data'
 ]);

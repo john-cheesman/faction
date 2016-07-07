@@ -8,10 +8,29 @@
     </head>
 
     <body>
+        <button onclick="requestFullscreen()">Full screen</button>
+
         <main class="game-screen" id="gameScreen"></main>
+        <canvas id="game-controller"></canvas>
 
         <script src="vendor/phaser.min.js"></script>
         <script src="vendor/phaser-state-transition-plugin.js"></script>
+        <script src="vendor/phaser-plugin-virtual-gamepad.js"></script>
         <script src="js/scripts.js"></script>
+
+        <script>
+            function requestFullscreen() {
+                var elem = document.getElementById('gameScreen');
+                if (elem.requestFullscreen) {
+                  elem.requestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                  elem.msRequestFullscreen();
+                } else if (elem.mozRequestFullScreen) {
+                  elem.mozRequestFullScreen();
+                } else if (elem.webkitRequestFullscreen) {
+                  elem.webkitRequestFullscreen();
+                }
+            }
+        </script>
     </body>
 </html>
