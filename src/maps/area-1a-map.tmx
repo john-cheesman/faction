@@ -281,19 +281,12 @@
 </data>
  </layer>
  <objectgroup name="objectLayer">
-  <object id="29" name="Katie" type="Player" gid="129" x="416" y="416" width="32" height="32">
-   <properties>
-    <property name="direction" value="down"/>
-    <property name="group" value="player"/>
-    <property name="texture" value="shadowSpritesheet"/>
-    <property name="xp" type="int" value="500"/>
-   </properties>
-  </object>
-  <object id="30" name="John" type="Shadow" gid="135" x="544" y="128" width="32" height="32">
+  <object id="30" name="John" type="Enemy" gid="135" x="544" y="128" width="32" height="32">
    <properties>
     <property name="direction" value="down"/>
     <property name="group" value="enemies"/>
-    <property name="texture" value="shadowSpritesheet"/>
+    <property name="job" value="soldier"/>
+    <property name="texture" value="soldierSpritesheet"/>
     <property name="xp" type="int" value="1000"/>
    </properties>
   </object>

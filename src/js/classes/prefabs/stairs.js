@@ -10,14 +10,15 @@ export class Stairs extends Prefab {
     }
 
     update() {
-        this.game.physics.arcade.overlap(this.game.player, this, this.use, null, this);
+        this.game.physics.arcade.overlap(this.gameState.groups.party, this, this.use, null, this);
     }
 
     use() {
         if (!this.hidden) {
             let currentState = this.game.state.getCurrentState();
 
-            this.game.state.start(this.targetState, true, false, currentState.levelID);
+            this.gameState.leaveArea();
+            //this.game.state.start(this.targetState, true, false, currentState.levelID);
         }
     }
 }

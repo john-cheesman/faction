@@ -13,8 +13,20 @@
         }
     },
     "groups": [
-        "player",
+        "party",
         "enemies",
         "chests"
+    ],
+    "party": [
+        {
+            "name": "Katie",
+            "x": 416,
+            "y": 416,
+            "properties": {
+                "job": "shadow",
+                "texture": "shadowSpritesheet",
+                "xp": 500
+            }
+        }
     ]
 }

@@ -1,16 +1,15 @@
 import { Player } from '../prefabs/persons/player';
-import { Soldier } from '../prefabs/persons/soldier';
-import { Shadow } from '../prefabs/persons/shadow';
+import { Enemy } from '../prefabs/persons/enemy';
 import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
 import { Stairs } from '../prefabs/stairs';
+import { Storage } from '../storage';
 
 let prefabClasses;
 
 prefabClasses = {
     Player: Player,
-    Soldier: Soldier,
-    Shadow: Shadow,
+    Enemy: Enemy,
     Chest: Chest,
     Fire: Fire,
     Stairs: Stairs
@@ -29,7 +28,10 @@ export class Area extends Phaser.State {
 
     create() {
         let groupName,
-            objectLayer;
+            object,
+            objectLayer,
+            player,
+            party;
 
         this.layers = {};
 
@@ -45,7 +47,7 @@ export class Area extends Phaser.State {
 
         this.groups = {};
 
-        this.areaData.groups.forEach(function (groupName) {
+        this.areaData.groups.forEach((groupName) => {
             this.groups[groupName] = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
         }, this);
 
@@ -53,15 +55,25 @@ export class Area extends Phaser.State {
 
         for (objectLayer in this.map.objects) {
             if (this.map.objects.hasOwnProperty(objectLayer)) {
-                this.map.objects[objectLayer].forEach(this.createObject, this);
+                this.map.objects[objectLayer].forEach((object) => {
+                    object.y -= this.map.tileHeight;
+                    this.createObject(object);
+                }, this);
             }
         }
 
-        console.log(this.groups);
-        console.log(this.groups.enemies.children[0].currentStats, this.groups.enemies.children[0].currentStats.defence,
-            this.groups.enemies.children[0].currentStats.evasion,
-            this.groups.enemies.children[0].currentStats.accuracy,
-            this.groups.enemies.children[0].currentStats.speed);
+        party = Storage.loadParty();
+
+        if (party === null) {
+            party = this.areaData.party;
+        }
+
+        party.forEach((player) => {
+            player.type = 'Player';
+            player.properties.group = 'party';
+
+            this.createObject(player);
+        }, this);
 
         this.game.controls = {};
 
@@ -72,38 +84,40 @@ export class Area extends Phaser.State {
         this.game.controls.button = this.game.controls.gamepad.addButton(270, 250, 0.5, 'gamepad');
     }
 
-    leaveArea() {}
+    leaveArea() {
+        Storage.saveParty(this.groups.party);
+    }
 
-    createObject(object) {
-        let objectY,
-            position,
-            prefab;
+    createObject(objectData) {
+        let prefab;
 
-        objectY = object.y - this.map.tileHeight;
+        if (prefabClasses.hasOwnProperty(objectData.type)) {
+            prefab = new prefabClasses[objectData.type](this, objectData.name, objectData.x, objectData.y, objectData.properties);
 
-        if (prefabClasses.hasOwnProperty(object.type)) {
-            prefab = new prefabClasses[object.type](this, object.name, object.x, objectY, object.properties);
-
-            if (object.properties.group) {
-                if (this.groups.hasOwnProperty(object.properties.group)) {
-                    this.groups[object.properties.group].add(prefab);
-                }
-                else {
-                    console.error(`Unknown group: ${object.properties.group}`);
-                }
+            if (objectData.properties.group) {
+                this.addObjectToGroup(prefab, objectData.properties.group);
             }
             else {
                 this.game.add.existing(prefab);
             }
         }
         else {
-            console.error(`Unknown prefab type: ${object.type}`);
+            console.error(`Unknown prefab type: ${objectData.type}`);
+        }
+    }
+
+    addObjectToGroup(prefab, group) {
+        if (this.groups.hasOwnProperty(group)) {
+            this.groups[group].add(prefab);
+        }
+        else {
+            console.error(`Unknown group: ${group}`);
         }
     }
 
     update() {
-        this.game.physics.arcade.collide(this.groups.player, this.groups.chests, this.enableInteraction, null, this);
-        this.game.physics.arcade.collide(this.groups.player, this.groups.enemies, this.enableInteraction, null, this);
+        this.game.physics.arcade.collide(this.groups.party, this.groups.chests, this.enableInteraction, null, this);
+        this.game.physics.arcade.collide(this.groups.party, this.groups.enemies, this.enableInteraction, null, this);
     }
 
     enableInteraction(player, object) {

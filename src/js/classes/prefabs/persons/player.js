@@ -1,7 +1,7 @@
-import { Shadow } from './shadow';
+import { Person } from '../person';
 import { animations, frames, playerSpeed } from '../../../config';
 
-export class Player extends Shadow {
+export class Player extends Person {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
 

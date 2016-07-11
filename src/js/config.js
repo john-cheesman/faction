@@ -64,4 +64,19 @@ const colours = {
     blue: 0x597dce
 };
 
-export { dimensions, animations, frames, playerSpeed, colours }
+const jobStats = {
+    shadow: {
+        strength: 7,
+        vitality: 6,
+        agility: 9,
+        intelligence: 8
+    },
+    soldier: {
+        strength: 9,
+        vitality: 8,
+        agility: 5,
+        intelligence: 4
+    }
+}
+
+export { dimensions, animations, frames, playerSpeed, colours, jobStats }

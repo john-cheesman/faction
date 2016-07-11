@@ -66,32 +66,6 @@
          "name":"objectLayer",
          "objects":[
                 {
-                 "gid":129,
-                 "height":32,
-                 "id":29,
-                 "name":"Katie",
-                 "properties":
-                    {
-                     "direction":"down",
-                     "group":"player",
-                     "texture":"shadowSpritesheet",
-                     "xp":500
-                    },
-                 "propertytypes":
-                    {
-                     "direction":"string",
-                     "group":"string",
-                     "texture":"string",
-                     "xp":"int"
-                    },
-                 "rotation":0,
-                 "type":"Player",
-                 "visible":true,
-                 "width":32,
-                 "x":416,
-                 "y":416
-                }, 
-                {
                  "gid":135,
                  "height":32,
                  "id":30,
@@ -100,18 +74,20 @@
                     {
                      "direction":"down",
                      "group":"enemies",
-                     "texture":"shadowSpritesheet",
+                     "job":"soldier",
+                     "texture":"soldierSpritesheet",
                      "xp":1000
                     },
                  "propertytypes":
                     {
                      "direction":"string",
                      "group":"string",
+                     "job":"string",
                      "texture":"string",
                      "xp":"int"
                     },
                  "rotation":0,
-                 "type":"Shadow",
+                 "type":"Enemy",
                  "visible":true,
                  "width":32,
                  "x":544,

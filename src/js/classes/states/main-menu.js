@@ -21,13 +21,5 @@ export class MainMenu extends Phaser.State {
         ]);
 
         this.menu.create();
-
-        this.game.controls = {};
-
-        this.game.controls.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
-
-        this.game.controls.joystick = this.game.controls.gamepad.addJoystick(35, 250, 0.5, 'gamepad');
-
-        this.game.controls.button = this.game.controls.gamepad.addButton(270, 250, 0.5, 'gamepad');
     }
 }
