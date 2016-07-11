@@ -12,10 +12,6 @@ export class Chest extends Prefab {
         this.animations.add('open', animations.chest.open, 10);
     }
 
-    update() {
-        //this.gameState.game.physics.arcade.overlap(this.gameState.groups.player.children[0], this, this.enableInteraction, null, this);
-    }
-
     enableInteraction(player, chest) {
         player.interactionTarget = chest;
     }

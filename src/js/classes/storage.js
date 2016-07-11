@@ -17,19 +17,20 @@ function load(key) {
 export class Storage {
     static saveParty(partyGroup) {
         let partyData,
-            player;
+            partyMember;
 
         partyData = [];
 
-        partyGroup.forEach((player) => {
+        partyGroup.forEach((partyMember) => {
             partyData.push({
-                name: player.name,
-                x: player.x,
-                y: player.y,
+                name: partyMember.name,
+                x: partyMember.x,
+                y: partyMember.y,
+                type: partyMember.constructor.name,
                 properties: {
-                    job: player.job.name,
-                    texture: 'shadowSpritesheet',
-                    xp: player.xp
+                    job: partyMember.job.name,
+                    texture: partyMember.textureName,
+                    xp: partyMember.xp
                 }
             });
         });

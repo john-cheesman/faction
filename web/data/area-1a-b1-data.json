@@ -2,7 +2,7 @@
     "assets": {
         "areaTilemap": {
             "type": "tilemap",
-            "source": "maps/area-1a-map.json"
+            "source": "maps/area-1a-b1-map.json"
         }
     },
     "map": {
@@ -30,18 +30,6 @@
             "name": "Katie",
             "x": 416,
             "y": 416,
-            "type": "Person",
-            "properties": {
-                "job": "shadow",
-                "texture": "shadowSpritesheet",
-                "xp": 500
-            }
-        },
-        {
-            "name": "John",
-            "x": 416,
-            "y": 416,
-            "type": "Person",
             "properties": {
                 "job": "shadow",
                 "texture": "shadowSpritesheet",

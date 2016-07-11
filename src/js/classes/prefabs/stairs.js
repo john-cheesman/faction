@@ -5,12 +5,12 @@ export class Stairs extends Prefab {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
 
-        this.targetState = properties.targetState;
+        this.targetArea = properties.targetArea;
         this.hidden = properties.hidden;
     }
 
     update() {
-        this.game.physics.arcade.overlap(this.gameState.groups.party, this, this.use, null, this);
+        this.game.physics.arcade.overlap(this.gameState.player, this, this.use, null, this);
     }
 
     use() {
@@ -18,7 +18,7 @@ export class Stairs extends Prefab {
             let currentState = this.game.state.getCurrentState();
 
             this.gameState.leaveArea();
-            //this.game.state.start(this.targetState, true, false, currentState.levelID);
+            this.game.state.start('Boot', true, false, `data/area-${this.targetArea}-data.json`, 'Area');
         }
     }
 }

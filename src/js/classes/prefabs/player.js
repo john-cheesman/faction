@@ -1,9 +1,13 @@
-import { Person } from '../person';
-import { animations, frames, playerSpeed } from '../../../config';
+import { Prefab } from '../prefab';
+import { animations, frames, playerSpeed } from '../../config';
 
-export class Player extends Person {
+export class Player extends Prefab {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
+
+        this.direction = properties.direction || 'down';
+
+        this.frame = frames.person[this.direction];
 
         this.animations.add('up', animations.person.walk.up, 10);
         this.animations.add('right', animations.person.walk.right, 10);

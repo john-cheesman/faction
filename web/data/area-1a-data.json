@@ -17,11 +17,31 @@
         "enemies",
         "chests"
     ],
+    "player": {
+        "x": 416,
+        "y": 416,
+        "type": "Player",
+        "properties": {
+            "texture": "shadowSpritesheet"
+        }
+    },
     "party": [
         {
             "name": "Katie",
             "x": 416,
             "y": 416,
+            "type": "Person",
+            "properties": {
+                "job": "shadow",
+                "texture": "shadowSpritesheet",
+                "xp": 500
+            }
+        },
+        {
+            "name": "John",
+            "x": 416,
+            "y": 416,
+            "type": "Person",
             "properties": {
                 "job": "shadow",
                 "texture": "shadowSpritesheet",

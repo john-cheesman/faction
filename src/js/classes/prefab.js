@@ -4,6 +4,7 @@ export class Prefab extends Phaser.Sprite {
 
         this.gameState = gameState;
         this.name = name;
+        this.textureName = properties.texture;
 
         if (properties.flipX) {
             this.anchor.setTo(0.5, 0);

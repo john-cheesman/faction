@@ -1,4 +1,5 @@
-import { Player } from '../prefabs/persons/player';
+import { Person } from '../prefabs/person';
+import { Player } from '../prefabs/player';
 import { Enemy } from '../prefabs/persons/enemy';
 import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
@@ -8,6 +9,7 @@ import { Storage } from '../storage';
 let prefabClasses;
 
 prefabClasses = {
+    Person: Person,
     Player: Player,
     Enemy: Enemy,
     Chest: Chest,
@@ -30,8 +32,8 @@ export class Area extends Phaser.State {
         let groupName,
             object,
             objectLayer,
-            player,
-            party;
+            party,
+            partyMember;
 
         this.layers = {};
 
@@ -68,12 +70,15 @@ export class Area extends Phaser.State {
             party = this.areaData.party;
         }
 
-        party.forEach((player) => {
-            player.type = 'Player';
-            player.properties.group = 'party';
+        party.forEach((partyMember) => {
+            partyMember.properties.group = 'party';
 
-            this.createObject(player);
+            this.createObject(partyMember);
         }, this);
+
+        this.groups.party.visible = false;
+
+        this.player = this.createObject(this.areaData.player);
 
         this.game.controls = {};
 
@@ -104,6 +109,8 @@ export class Area extends Phaser.State {
         else {
             console.error(`Unknown prefab type: ${objectData.type}`);
         }
+
+        return prefab;
     }
 
     addObjectToGroup(prefab, group) {
@@ -116,8 +123,8 @@ export class Area extends Phaser.State {
     }
 
     update() {
-        this.game.physics.arcade.collide(this.groups.party, this.groups.chests, this.enableInteraction, null, this);
-        this.game.physics.arcade.collide(this.groups.party, this.groups.enemies, this.enableInteraction, null, this);
+        this.game.physics.arcade.collide(this.player, this.groups.chests, this.enableInteraction, null, this);
+        this.game.physics.arcade.collide(this.player, this.groups.enemies, this.enableInteraction, null, this);
     }
 
     enableInteraction(player, object) {
