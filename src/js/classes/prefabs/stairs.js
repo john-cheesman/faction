@@ -1,5 +1,6 @@
 import { Prefab } from '../prefab';
-import {sprites, dimensions} from '../../config';
+import { Storage } from '../storage';
+import { sprites, dimensions } from '../../config';
 
 export class Stairs extends Prefab {
     constructor(gameState, name, x, y, properties) {
@@ -7,6 +8,7 @@ export class Stairs extends Prefab {
 
         this.targetArea = properties.targetArea;
         this.hidden = properties.hidden;
+        this.targetPosition = [properties.targetX, properties.targetY];
     }
 
     update() {
@@ -16,6 +18,8 @@ export class Stairs extends Prefab {
     use() {
         if (!this.hidden) {
             let currentState = this.game.state.getCurrentState();
+
+            Storage.savePlayerPosition(this.targetPosition);
 
             this.gameState.leaveArea();
             this.game.state.start('Boot', true, false, `data/area-${this.targetArea}-data.json`, 'Area');

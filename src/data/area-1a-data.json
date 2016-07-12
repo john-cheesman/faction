@@ -48,5 +48,39 @@
                 "xp": 500
             }
         }
+    ],
+    "enemies": [
+        {
+            "name": "Felix",
+            "x": 544,
+            "y": 128,
+            "properties": {
+                "texture": "soldierSpritesheet",
+                "partyData": [
+                    {
+                        "name": "Felix",
+                        "x": 100,
+                        "y": 100,
+                        "type": "Combatant",
+                        "properties": {
+                            "texture": "soldierSpritesheet",
+                            "job": "soldier",
+                            "xp": 1000
+                        }
+                    },
+                    {
+                        "name": "Jude",
+                        "x": 100,
+                        "y": 200,
+                        "type": "Combatant",
+                        "properties": {
+                            "texture": "soldierSpritesheet",
+                            "job": "soldier",
+                            "xp": 1500
+                        }
+                    }
+                ]
+            }
+        }
     ]
 }

@@ -162,10 +162,10 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,105,105,105,105,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,105,105,105,105,105,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,105,105,105,105,105,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,105,105,105,105,105,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -221,13 +221,13 @@
    <property name="collision" value="true"/>
   </properties>
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,117,117,117,117,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,104,104,104,104,104,116,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,0,0,0,0,0,104,100,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,0,0,0,0,0,0,100,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,0,0,0,0,0,0,100,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,0,0,0,0,0,0,100,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,85,85,85,85,85,85,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -281,22 +281,7 @@
 </data>
  </layer>
  <objectgroup name="objectLayer">
-  <object id="30" name="John" type="Enemy" gid="135" x="544" y="128" width="32" height="32">
-   <properties>
-    <property name="direction" value="down"/>
-    <property name="group" value="enemies"/>
-    <property name="job" value="soldier"/>
-    <property name="texture" value="soldierSpritesheet"/>
-    <property name="xp" type="int" value="1000"/>
-   </properties>
-  </object>
-  <object id="31" name="fire" type="Fire" gid="98" x="512" y="64" width="32" height="32">
-   <properties>
-    <property name="frame" value="97"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="32" name="goldChest" type="Chest" gid="37" x="640" y="160" width="32" height="32">
+  <object id="32" name="goldChest" type="Chest" gid="37" x="512" y="128" width="32" height="32">
    <properties>
     <property name="contents" value="gold"/>
     <property name="frame" value="36"/>
@@ -304,21 +289,14 @@
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
-  <object id="33" name="potionChest" type="Chest" gid="37" x="192" y="96" width="32" height="32">
+  <object id="37" name="toGround" type="Stairs" gid="122" x="608" y="96" width="32" height="32">
    <properties>
-    <property name="contents" value="potion"/>
-    <property name="frame" value="36"/>
-    <property name="group" value="chests"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="37" name="toGround" type="Stairs" gid="2147483770" x="512" y="224" width="32" height="32">
-   <properties>
-    <property name="flipX" type="bool" value="true"/>
+    <property name="flipX" type="bool" value="false"/>
     <property name="frame" type="int" value="121"/>
     <property name="playerDirection" value="down"/>
-    <property name="playerStart" value="18,2"/>
     <property name="targetArea" value="1a"/>
+    <property name="targetX" type="int" value="576"/>
+    <property name="targetY" type="int" value="64"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>

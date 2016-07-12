@@ -35,7 +35,11 @@ export class Area extends Phaser.State {
             object,
             objectLayer,
             party,
-            partyMember;
+            partyMember,
+            enemies,
+            enemy,
+            player,
+            playerPosition;
 
         this.layers = {};
 
@@ -81,7 +85,28 @@ export class Area extends Phaser.State {
 
         this.groups.party.visible = false;
 
-        this.player = this.createObject(this.areaData.player);
+        enemies = this.areaData.enemies;
+
+        if (enemies) {
+            enemies.forEach((enemy) => {
+                enemy.properties.group = 'enemies';
+                enemy.type = 'Enemy';
+
+                this.createObject(enemy);
+            });
+        }
+
+        player = this.areaData.player;
+        playerPosition = Storage.loadPlayerPosition();
+
+        if (playerPosition) {
+            player.x = playerPosition[0];
+            player.y = playerPosition[1];
+
+            Storage.clearPlayerPosition();
+        }
+
+        this.player = this.createObject(player);
 
         this.game.controls = {};
 

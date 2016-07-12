@@ -44,4 +44,16 @@ export class Storage {
 
         return partyData;
     }
+
+    static savePlayerPosition(position) {
+        save('FactionPlayerPosition', position);
+    }
+
+    static loadPlayerPosition() {
+        return load('FactionPlayerPosition');
+    }
+
+    static clearPlayerPosition() {
+        localStorage.removeItem('FactionPlayerPosition');
+    }
 }

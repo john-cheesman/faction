@@ -23,6 +23,9 @@
    </objectgroup>
   </tile>
   <tile id="12">
+   <properties>
+    <property name="targetX" type="int" value="576"/>
+   </properties>
    <objectgroup draworder="index">
     <object id="0" x="0" y="0" width="32" height="32"/>
    </objectgroup>
@@ -225,13 +228,13 @@
 73,73,73,73,16,13,13,13,13,13,16,0,0,0,12,9,9,9,9,9,12,73,73,73,73,
 73,73,73,0,14,109,0,0,107,0,14,0,0,0,11,0,0,0,0,0,10,0,73,73,73,
 73,73,73,0,14,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,11,12,73,73,73,
-73,73,0,0,14,0,0,108,0,0,14,0,0,0,0,0,0,0,0,0,0,10,0,73,73,
+73,73,0,0,14,0,0,108,0,0,14,0,0,0,10,0,0,0,0,0,0,10,0,73,73,
 93,16,13,13,15,0,0,0,0,0,14,0,0,0,10,0,0,0,0,0,0,10,0,73,73,
 93,14,52,0,0,0,0,0,0,0,14,0,0,0,11,9,9,9,9,9,9,11,0,0,73,
 93,14,68,0,0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 93,14,0,0,0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 93,14,0,0,0,0,0,0,0,0,14,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
-93,15,13,13,13,13,13,0,0,13,15,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
+93,15,13,13,13,13,13,13,0,13,15,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 93,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
 0,0,0,0,0,0,0,0,0,0,0,0,141,0,0,0,0,0,0,0,0,0,0,0,0,
 93,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,93,
@@ -281,15 +284,6 @@
 </data>
  </layer>
  <objectgroup name="objectLayer">
-  <object id="30" name="John" type="Enemy" gid="135" x="544" y="128" width="32" height="32">
-   <properties>
-    <property name="direction" value="down"/>
-    <property name="group" value="enemies"/>
-    <property name="job" value="soldier"/>
-    <property name="texture" value="soldierSpritesheet"/>
-    <property name="xp" type="int" value="1000"/>
-   </properties>
-  </object>
   <object id="31" name="fire" type="Fire" gid="98" x="512" y="64" width="32" height="32">
    <properties>
     <property name="frame" value="97"/>
@@ -312,13 +306,14 @@
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
-  <object id="35" name="toB1" type="Stairs" gid="2147483771" x="608" y="96" width="32" height="32">
+  <object id="35" name="toB1" type="Stairs" gid="123" x="608" y="96" width="32" height="32">
    <properties>
-    <property name="flipX" type="bool" value="true"/>
+    <property name="flipX" type="bool" value="false"/>
     <property name="frame" type="int" value="122"/>
     <property name="playerDirection" value="up"/>
-    <property name="playerStart" value="20,2"/>
     <property name="targetArea" value="1a-b1"/>
+    <property name="targetX" type="int" value="576"/>
+    <property name="targetY" type="int" value="64"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
