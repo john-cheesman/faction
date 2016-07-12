@@ -1,6 +1,7 @@
 import { Person } from '../prefabs/person';
-import { Player } from '../prefabs/player';
+import { Player } from '../prefabs/persons/player';
 import { Enemy } from '../prefabs/persons/enemy';
+import { Combatant } from '../prefabs/persons/combatant';
 import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
 import { Stairs } from '../prefabs/stairs';
@@ -12,6 +13,7 @@ prefabClasses = {
     Person: Person,
     Player: Player,
     Enemy: Enemy,
+    Combatant: Combatant,
     Chest: Chest,
     Fire: Fire,
     Stairs: Stairs
@@ -72,6 +74,7 @@ export class Area extends Phaser.State {
 
         party.forEach((partyMember) => {
             partyMember.properties.group = 'party';
+            partyMember.type = 'Combatant';
 
             this.createObject(partyMember);
         }, this);

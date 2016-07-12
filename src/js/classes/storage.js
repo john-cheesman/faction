@@ -26,7 +26,6 @@ export class Storage {
                 name: partyMember.name,
                 x: partyMember.x,
                 y: partyMember.y,
-                type: partyMember.constructor.name,
                 properties: {
                     job: partyMember.job.name,
                     texture: partyMember.textureName,
