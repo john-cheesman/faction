@@ -1,4 +1,3 @@
-import { Stats } from './stats';
 import { jobStats } from '../config';
 
 function getJobStats(job){
@@ -6,7 +5,7 @@ function getJobStats(job){
 
     stats = jobStats[job];
 
-    if (stats == null) {
+    if (stats === null) {
         console.error(`Unknown job: ${job}`);
     }
 
@@ -14,8 +13,15 @@ function getJobStats(job){
 }
 
 export class Job {
-    constructor(job) {
-        this.name = job;
-        this.stats = new Stats(getJobStats(job));
+    constructor(jobName) {
+        let stats;
+
+        stats = getJobStats(jobName);
+
+        this.name = jobName;
+        this.strength = stats.strength;
+        this.vitality = stats.vitality;
+        this.agility = stats.agility;
+        this.intelligence = stats.intelligence;
     }
 }
