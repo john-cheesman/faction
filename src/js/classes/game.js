@@ -4,7 +4,7 @@ import { Area } from './states/area';
 import { GameOver } from './states/game-over';
 import { MainMenu } from './states/main-menu';
 import { Utility } from './utility';
-import { dimensions } from '../config';
+import { dimensions } from '../constants/dimensions';
 
 export class Game extends Phaser.Game {
     constructor() {

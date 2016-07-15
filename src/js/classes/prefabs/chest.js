@@ -1,5 +1,5 @@
 import { Prefab } from '../prefab';
-import { animations, sprites } from '../../config';
+import { animations } from '../../constants/animations';
 
 export class Chest extends Prefab {
     constructor(gameState, name, x, y, properties) {

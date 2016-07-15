@@ -1,4 +1,5 @@
-import {dimensions, sprites, animations} from '../../config';
+import { dimensions } from '../../constants/dimensions';
+import { animations } from '../../constants/animations';
 
 export class Preloader extends Phaser.State {
     init(dataObject, nextState) {

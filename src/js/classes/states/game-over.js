@@ -1,6 +1,8 @@
 import { Menu } from '../menu';
 import { Utility } from '../utility';
-import { dimensions, colours, levelData, sprites, frames } from '../../config';
+import { dimensions } from '../../constants/dimensions';
+import { colours } from '../../constants/colours';
+import { frames } from '../../constants/frames';
 
 export class GameOver extends Phaser.State {
     init(levelID) {

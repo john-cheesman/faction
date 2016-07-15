@@ -32,9 +32,9 @@
             "y": 416,
             "type": "Person",
             "properties": {
-                "job": "shadow",
-                "texture": "shadowSpritesheet",
-                "xp": 500
+                "job": "soldier",
+                "texture": "soldierSpritesheet",
+                "xp": 1500
             }
         },
         {

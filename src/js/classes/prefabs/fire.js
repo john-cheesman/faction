@@ -1,5 +1,5 @@
 import { Prefab } from '../prefab';
-import { animations } from '../../config';
+import { animations } from '../../constants/animations';
 
 export class Fire extends Prefab {
     create() {

@@ -1,4 +1,4 @@
-import { jobStats } from '../config';
+import { jobStats } from '../constants/job-stats';
 
 function getJobStats(job){
     let stats;

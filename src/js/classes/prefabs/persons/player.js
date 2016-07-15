@@ -1,5 +1,6 @@
 import { Person } from '../person';
-import { animations, frames, playerSpeed } from '../../../config';
+import { animations } from '../../../constants/animations';
+import { frames } from '../../../constants/frames';
 
 export class Player extends Person {
     constructor(gameState, name, x, y, properties) {
@@ -20,7 +21,7 @@ export class Player extends Person {
             interact: Phaser.Keyboard.SPACEBAR
         };
 
-        this.speed = playerSpeed;
+        this.speed = 120;
 
         this.gameState.game.camera.follow(this);
 

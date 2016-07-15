@@ -1,6 +1,8 @@
 import { Person } from '../person';
 import { Job } from '../../job';
 import { Experience } from '../../experience';
+import { EquipableItem } from '../../items/equipable-item';
+import { equipableItems } from '../../../constants/equipable-items';
 
 export class Combatant extends Person {
     constructor(gameState, name, x, y, properties) {
@@ -8,6 +10,7 @@ export class Combatant extends Person {
 
         this.xp = properties.xp;
         this.job = new Job(properties.job);
+        this.weapon = new EquipableItem(equipableItems.dagger);
 
         console.log(`${this.name} xp: ${this.xp} job: ${this.job.name} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed}`);
     }

@@ -1,10 +1,4 @@
-const dimensions = {
-    tileSize: 32,
-    gameWidth: 320,
-    gameHeight: 288
-};
-
-const animations = {
+export const animations = {
     person: {
         walk: {
             up: [0, 1, 2, 1],
@@ -45,38 +39,4 @@ const animations = {
     spinner: {
         spin: [0, 1, 2, 3, 4, 5, 6, 7]
     }
-}
-
-const frames = {
-    person: {
-        up: 1,
-        right: 11,
-        down: 21,
-        left: 31
-    }
-}
-
-const playerSpeed = 120;
-
-const colours = {
-    white: 0xdeeed6,
-    black: 0x140c1c,
-    blue: 0x597dce
 };
-
-const jobStats = {
-    shadow: {
-        strength: 7,
-        vitality: 6,
-        agility: 9,
-        intelligence: 8
-    },
-    soldier: {
-        strength: 9,
-        vitality: 8,
-        agility: 5,
-        intelligence: 4
-    }
-}
-
-export { dimensions, animations, frames, playerSpeed, colours, jobStats }

@@ -1,5 +1,6 @@
 import { Menu } from '../menu';
-import { colours, dimensions } from '../../config';
+import { colours } from '../../constants/colours';
+import { dimensions } from '../../constants/dimensions';
 
 export class MainMenu extends Phaser.State {
     create() {

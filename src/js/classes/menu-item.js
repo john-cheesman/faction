@@ -1,4 +1,4 @@
-import { colours } from '../config';
+import { colours } from '../constants/colours';
 
 let textStyle;
 

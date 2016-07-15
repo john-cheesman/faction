@@ -1,4 +1,5 @@
-import { dimensions, sprites, colours } from '../../config';
+import { dimensions } from '../../constants/dimensions';
+import { colours } from '../../constants/colours';
 
 export class Boot extends Phaser.State {
     init(dataFile, nextState) {

@@ -1,4 +1,4 @@
-import { dimensions } from '../config';
+import { dimensions } from '../constants/dimensions';
 
 export class Utility {
     static filterArray(array, key, value) {

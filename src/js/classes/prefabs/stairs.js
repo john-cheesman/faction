@@ -1,6 +1,6 @@
 import { Prefab } from '../prefab';
 import { Storage } from '../storage';
-import { sprites, dimensions } from '../../config';
+import { dimensions } from '../../constants/dimensions';
 
 export class Stairs extends Prefab {
     constructor(gameState, name, x, y, properties) {

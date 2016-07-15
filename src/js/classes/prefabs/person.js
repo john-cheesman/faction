@@ -1,5 +1,5 @@
 import { Prefab } from '../prefab';
-import { frames } from '../../config';
+import { frames } from '../../constants/frames';
 
 export class Person extends Prefab {
     constructor(gameState, name, x, y, properties) {
