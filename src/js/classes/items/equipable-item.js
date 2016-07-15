@@ -1,4 +1,5 @@
 import { Item } from '../item';
+import { equipableItems } from '../../constants/equipable-items';
 
 export class EquipableItem extends Item {
     constructor(equipmentData) {
@@ -14,5 +15,20 @@ export class EquipableItem extends Item {
         this.evasion = equipmentData.evasion;
         this.accuracy = equipmentData.accuracy;
         this.speed = equipmentData.speed;
+    }
+
+    static instantiateFromString(type) {
+        let itemData;
+
+        itemData = equipableItems[type];
+
+        if (itemData) {
+            return new EquipableItem(itemData);
+        }
+        else if (type) {
+            console.error(`Unknown equipable item: ${type}`);
+        }
+
+        return null;
     }
 }

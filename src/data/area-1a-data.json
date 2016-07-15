@@ -30,22 +30,30 @@
             "name": "Katie",
             "x": 416,
             "y": 416,
-            "type": "Person",
+            "type": "Combatant",
             "properties": {
                 "job": "soldier",
                 "texture": "soldierSpritesheet",
-                "xp": 1500
+                "xp": 1500,
+                "equipment": {
+                    "primaryHand": "dagger",
+                    "secondaryHand": "dagger"
+                }
             }
         },
         {
             "name": "John",
             "x": 416,
             "y": 416,
-            "type": "Person",
+            "type": "Combatant",
             "properties": {
                 "job": "shadow",
                 "texture": "shadowSpritesheet",
-                "xp": 500
+                "xp": 500,
+                "equipment": {
+                    "primaryHand": "dagger",
+                    "secondaryHand": "dagger"
+                }
             }
         }
     ],
@@ -65,7 +73,11 @@
                         "properties": {
                             "texture": "soldierSpritesheet",
                             "job": "soldier",
-                            "xp": 1000
+                            "xp": 1000,
+                            "equipment": {
+                                "primaryHand": "dagger",
+                                "secondaryHand": "dagger"
+                            }
                         }
                     },
                     {
@@ -76,7 +88,11 @@
                         "properties": {
                             "texture": "soldierSpritesheet",
                             "job": "soldier",
-                            "xp": 1500
+                            "xp": 1500,
+                            "equipment": {
+                                "primaryHand": "dagger",
+                                "secondaryHand": "dagger"
+                            }
                         }
                     }
                 ]

@@ -2,6 +2,7 @@ import { Person } from '../person';
 import { Job } from '../../job';
 import { Experience } from '../../experience';
 import { EquipableItem } from '../../items/equipable-item';
+import { Equipment } from '../../equipment';
 import { equipableItems } from '../../../constants/equipable-items';
 
 export class Combatant extends Person {
@@ -10,9 +11,18 @@ export class Combatant extends Person {
 
         this.xp = properties.xp;
         this.job = new Job(properties.job);
-        this.weapon = new EquipableItem(equipableItems.dagger);
 
-        console.log(`${this.name} xp: ${this.xp} job: ${this.job.name} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed}`);
+        if (properties.equipment) {
+            this.equipment = new Equipment({
+                head: EquipableItem.instantiateFromString(properties.equipment.head),
+                body: EquipableItem.instantiateFromString(properties.equipment.body),
+                primaryHand: EquipableItem.instantiateFromString(properties.equipment.primaryHand),
+                secondaryHand: EquipableItem.instantiateFromString(properties.equipment.secondaryHand),
+                feet: EquipableItem.instantiateFromString(properties.equipment.feet)
+            });
+        }
+
+        console.log(`${this.name} xp: ${this.xp} job: ${this.job.name} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed} equipment:`, this.equipment);
     }
 
     get level() {
@@ -24,19 +34,19 @@ export class Combatant extends Person {
     }
 
     get strength() {
-        return this.level * ((this.job.strength * 25.5) / 99)
+        return this.level * ((this.job.strength * 25.5) / 99);
     }
 
     get vitality() {
-        return this.level * ((this.job.vitality * 25.5) / 99)
+        return this.level * ((this.job.vitality * 25.5) / 99);
     }
 
     get agility() {
-        return this.level * ((this.job.agility * 25.5) / 99)
+        return this.level * ((this.job.agility * 25.5) / 99);
     }
 
     get intelligence() {
-        return this.level * ((this.job.intelligence * 25.5) / 99)
+        return this.level * ((this.job.intelligence * 25.5) / 99);
     }
 
     get hp()

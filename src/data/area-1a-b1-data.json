@@ -30,10 +30,15 @@
             "name": "Katie",
             "x": 416,
             "y": 416,
+            "type": "Combatant",
             "properties": {
                 "job": "shadow",
                 "texture": "shadowSpritesheet",
-                "xp": 500
+                "xp": 500,
+                "equipment": {
+                    "primaryHand": "dagger",
+                    "secondaryHand": "dagger"
+                }
             }
         }
     ]
