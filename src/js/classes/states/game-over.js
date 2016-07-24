@@ -2,7 +2,6 @@ import { Menu } from '../menu';
 import { Utility } from '../utility';
 import { dimensions } from '../../constants/dimensions';
 import { colours } from '../../constants/colours';
-import { frames } from '../../constants/frames';
 
 export class GameOver extends Phaser.State {
     init(levelID) {
@@ -10,8 +9,7 @@ export class GameOver extends Phaser.State {
     }
 
     create() {
-        let menuOptions,
-            playerSprite;
+        let menuOptions;
 
         this.game.add.text((dimensions.tileSize / 2), (dimensions.tileSize / 2), 'Game Over', {
             font: '20px Consolas',
@@ -20,12 +18,6 @@ export class GameOver extends Phaser.State {
             wordWrap: true,
             wordWrapWidth: (dimensions.gameWidth - dimensions.tileSize)
         });
-
-        playerSprite = this.game.add.sprite((dimensions.gameWidth / 2), (dimensions.gameHeight / 2), sprites.tileSet.key);
-
-        playerSprite.frame = frames.player.dead;
-
-        playerSprite.anchor.set(0.5);
 
         menuOptions = [
             {

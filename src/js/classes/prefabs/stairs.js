@@ -22,7 +22,7 @@ export class Stairs extends Prefab {
             Storage.savePlayerPosition(this.targetPosition);
 
             this.gameState.leaveArea();
-            this.game.state.start('Boot', true, false, `data/area-${this.targetArea}-data.json`, 'Area');
+            this.game.state.start('Boot', true, false, `data/area/area-${this.targetArea}-data.json`, 'Area');
         }
     }
 }

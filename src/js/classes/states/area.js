@@ -34,8 +34,6 @@ export class Area extends Phaser.State {
         let groupName,
             object,
             objectLayer,
-            party,
-            partyMember,
             enemies,
             enemy,
             player,
@@ -69,21 +67,6 @@ export class Area extends Phaser.State {
                 }, this);
             }
         }
-
-        party = Storage.loadParty();
-
-        if (party === null) {
-            party = this.areaData.party;
-        }
-
-        party.forEach((partyMember) => {
-            partyMember.properties.group = 'party';
-            partyMember.type = 'Combatant';
-
-            this.createObject(partyMember);
-        }, this);
-
-        this.groups.party.visible = false;
 
         enemies = this.areaData.enemies;
 

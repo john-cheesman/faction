@@ -1,6 +1,6 @@
 import { Person } from '../person';
 import { animations } from '../../../constants/animations';
-import { frames } from '../../../constants/frames';
+import { spriteFrames } from '../../../constants/sprite-frames';
 
 export class Player extends Person {
     constructor(gameState, name, x, y, properties) {
@@ -29,6 +29,8 @@ export class Player extends Person {
 
         this.body.immovable = false;
         this.body.setSize(24, 24, 4, 16);
+
+
     }
 
     update() {
@@ -106,7 +108,7 @@ export class Player extends Person {
             this.body.velocity.x = 0;
             this.body.velocity.y = 0;
             this.animations.stop();
-            this.frame = frames.person[this.direction];
+            this.frame = spriteFrames.person[this.direction];
         }
     }
 }

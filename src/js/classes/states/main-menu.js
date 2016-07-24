@@ -16,7 +16,7 @@ export class MainMenu extends Phaser.State {
             {
                 text: 'Start',
                 callback: () => {
-                    this.game.state.start('Boot', true, false, 'data/area-1a-data.json', 'Area');
+                    this.game.state.start('Boot', true, false, 'data/area/area-1a-data.json', 'Area');
                 }
             }
         ]);

@@ -14,6 +14,16 @@ function load(key) {
     return JSON.parse(json);
 }
 
+function mapEquipment(equipment) {
+    return {
+        head: equipment.head ? equipment.head.id : null,
+        body: equipment.body ? equipment.body.id : null,
+        primaryHand: equipment.primaryHand ? equipment.primaryHand.id : null,
+        secondaryHand: equipment.secondaryHand ? equipment.secondaryHand.id : null,
+        feet: equipment.feet ? equipment.feet.id : null
+    };
+}
+
 export class Storage {
     static saveParty(partyGroup) {
         let partyData,
@@ -29,18 +39,19 @@ export class Storage {
                 properties: {
                     job: partyMember.job.name,
                     texture: partyMember.textureName,
-                    xp: partyMember.xp
+                    xp: partyMember.xp,
+                    equipment: mapEquipment(partyMember.equipment)
                 }
             });
         });
 
-        save('FactionPartyData', partyData);
+        save('FactionPlayerParty', partyData);
     }
 
     static loadParty() {
         let partyData;
 
-        partyData = load('FactionPartyData');
+        partyData = load('FactionPlayerParty');
 
         return partyData;
     }
