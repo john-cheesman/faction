@@ -1,3 +1,3 @@
 # Faction
 
-A rerto RPG built with Phaser
+A retro RPG built with Phaser
