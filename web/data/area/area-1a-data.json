@@ -1,4 +1,5 @@
 {
+    "name": "area-1a",
     "assets": {
         "areaTilemap": {
             "type": "tilemap",

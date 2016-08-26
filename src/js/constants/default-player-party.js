@@ -2,6 +2,7 @@ export const defaultPlayerParty = {
     name: 'player',
     combatants: [
         {
+            name: 'John',
             x: 128,
             y: 64,
             type: 'Combatant',

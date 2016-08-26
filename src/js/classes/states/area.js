@@ -6,6 +6,7 @@ import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
 import { Stairs } from '../prefabs/stairs';
 import { Storage } from '../storage';
+import { Progress } from '../progress';
 
 let prefabClasses;
 
@@ -37,7 +38,12 @@ export class Area extends Phaser.State {
             enemies,
             enemy,
             player,
-            playerPosition;
+            playerPosition,
+            progress;
+
+        progress = new Progress(this.areaData.name);
+
+        Storage.saveLocalProgress(progress);
 
         this.layers = {};
 

@@ -67,4 +67,12 @@ export class Storage {
     static clearPlayerPosition() {
         localStorage.removeItem('FactionPlayerPosition');
     }
+
+    static saveLocalProgress(progress) {
+        save('FactionLocalProgress', progress);
+    }
+
+    static loadLocalProgress() {
+        return load('FactionLocalProgress');
+    }
 }
