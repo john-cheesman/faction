@@ -1,12 +1,15 @@
 import { Menu } from '../menu';
 import { Storage } from '../storage';
+import { Progress } from '../progress';
 import { colours } from '../../constants/colours';
 import { dimensions } from '../../constants/dimensions';
+import { newGameProgress } from '../../constants/new-game-progress';
 
 export class MainMenu extends Phaser.State {
     create() {
         let localProgress,
-            menuItems;
+            menuItems,
+            newGameLocalProgress;
 
         localProgress = Storage.loadLocalProgress();
 
@@ -34,6 +37,11 @@ export class MainMenu extends Phaser.State {
                     this.game.state.start('Boot', true, false, `data/area/${localProgress.area}-data.json`, 'Area');
                 }
             });
+        }
+        else {
+            newGameLocalProgress = new Progress(newGameProgress.area, newGameProgress.party);
+
+            Storage.saveLocalProgress(newGameLocalProgress);
         }
 
         this.menu = new Menu(this.game, (dimensions.tileSize / 2), (dimensions.tileSize * 5.5), menuItems);

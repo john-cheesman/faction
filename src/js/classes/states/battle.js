@@ -1,7 +1,7 @@
 import { Combatant } from '../prefabs/persons/combatant';
 import { Party } from '../party';
 import { Storage } from '../storage';
-import { defaultPlayerParty } from '../../constants/default-player-party';
+import { newGameProgress } from '../../constants/new-game-progress';
 
 export class Battle extends Phaser.State {
     init(battleData) {
@@ -47,9 +47,7 @@ export class Battle extends Phaser.State {
         playerPartyData = Storage.loadParty();
 
         if (!playerPartyData) {
-            console.warn('Failed to load FactionPlayerParty from LocalStorage');
-
-            playerPartyData = defaultPlayerParty;
+            playerPartyData = Storage.loadLocalProgress().party;
         }
 
         playerPartyData.combatants.forEach((playerCombatant) => {
@@ -64,6 +62,8 @@ export class Battle extends Phaser.State {
         });
 
         this.playerParty = new Party(playerPartyData.name, playerCombatants, playerPartyData.xpFactor);
+
+        Storage.saveParty(this.playerParty);
     }
 
     endBattle() {

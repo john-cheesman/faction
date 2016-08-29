@@ -24,28 +24,36 @@ function mapEquipment(equipment) {
     };
 }
 
-export class Storage {
-    static saveParty(partyGroup) {
-        let partyData,
-            partyMember;
+function mapParty(party) {
+    let partyData,
+        partyMember;
 
-        partyData = [];
+    partyData = {
+        name: party.name,
+        combatants: [],
+        xpFactor: party.xpFactor
+    };
 
-        partyGroup.forEach((partyMember) => {
-            partyData.push({
-                name: partyMember.name,
-                x: partyMember.x,
-                y: partyMember.y,
-                properties: {
-                    job: partyMember.job.name,
-                    texture: partyMember.textureName,
-                    xp: partyMember.xp,
-                    equipment: mapEquipment(partyMember.equipment)
-                }
-            });
+    party.combatants.forEach((partyMember) => {
+        partyData.combatants.push({
+            name: partyMember.name,
+            x: partyMember.x,
+            y: partyMember.y,
+            properties: {
+                job: partyMember.job.name,
+                texture: partyMember.textureName,
+                xp: partyMember.xp,
+                equipment: mapEquipment(partyMember.equipment)
+            }
         });
+    });
 
-        save('FactionPlayerParty', partyData);
+    return partyData;
+}
+
+export class Storage {
+    static saveParty(party) {
+        save('FactionPlayerParty', mapParty(party));
     }
 
     static loadParty() {
@@ -69,7 +77,17 @@ export class Storage {
     }
 
     static saveLocalProgress(progress) {
-        save('FactionLocalProgress', progress);
+        let progressData;
+
+        progressData = {
+            area: progress.area
+        };
+
+        if (progress.party) {
+            progressData.party = mapParty(progress.party);
+        }
+
+        save('FactionLocalProgress', progressData);
     }
 
     static loadLocalProgress() {

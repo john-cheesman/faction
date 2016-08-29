@@ -41,10 +41,6 @@ export class Area extends Phaser.State {
             playerPosition,
             progress;
 
-        progress = new Progress(this.areaData.name);
-
-        Storage.saveLocalProgress(progress);
-
         this.layers = {};
 
         this.map.layers.forEach((layer) => {
