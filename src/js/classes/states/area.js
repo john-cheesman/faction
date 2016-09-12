@@ -7,6 +7,7 @@ import { Fire } from '../prefabs/fire';
 import { Stairs } from '../prefabs/stairs';
 import { Storage } from '../storage';
 import { Progress } from '../progress';
+import { PathFinder } from '../../plugins/path-finder';
 
 let prefabClasses;
 
@@ -39,7 +40,9 @@ export class Area extends Phaser.State {
             enemy,
             player,
             playerPosition,
-            progress;
+            progress,
+            collisionLayerData,
+            tileDimensions;
 
         this.layers = {};
 
@@ -48,6 +51,7 @@ export class Area extends Phaser.State {
 
             if (layer.properties.collision) {
                 this.map.setCollisionByExclusion([], true, this.layers[layer.name]);
+                collisionLayerData = layer.data;
             }
         }, this);
 
@@ -93,13 +97,18 @@ export class Area extends Phaser.State {
 
         this.player = this.createObject(player);
 
-        this.game.controls = {};
+        tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
+        this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], tileDimensions);
 
-        this.game.controls.gamepad = this.game.plugins.add(Phaser.Plugin.VirtualGamepad);
+        this.game.input.onDown.add(this.movePlayer, this);
+    }
 
-        this.game.controls.joystick = this.game.controls.gamepad.addJoystick(35, 250, 0.5, 'gamepad');
+    movePlayer() {
+        let targetPosition;
 
-        this.game.controls.button = this.game.controls.gamepad.addButton(270, 250, 0.5, 'gamepad');
+        targetPosition = new Phaser.Point(this.game.input.activePointer.x, this.game.input.activePointer.y);
+
+        this.player.moveTo(targetPosition);
     }
 
     leaveArea() {
@@ -135,9 +144,28 @@ export class Area extends Phaser.State {
         }
     }
 
+    findPathTo(tilex, tiley) {
+        let map;
+
+        map = this.map;
+
+        this.pathfinder.setCallbackFunction(function(path) {
+            path = path || [];
+            for(var i = 0, ilen = path.length; i < ilen; i++) {
+                map.putTile(46, path[i].x, path[i].y);
+            }
+            blocked = false;
+        });
+
+        this.pathfinder.preparePathCalculation([0,0], [tilex,tiley]);
+        this.pathfinder.calculatePath();
+    }
+
     update() {
         this.game.physics.arcade.collide(this.player, this.groups.chests, this.enableInteraction, null, this);
         this.game.physics.arcade.collide(this.player, this.groups.enemies, this.enableInteraction, null, this);
+        this.game.physics.arcade.collide(this.player, this.layers.subCollisionLayer, this.player.stopMoving, null, this.player);
+        this.game.physics.arcade.collide(this.player, this.layers.superCollisionLayer, this.player.stopMoving, null, this.player);
     }
 
     enableInteraction(player, object) {

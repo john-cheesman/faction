@@ -219,7 +219,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,76,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer name="subCollisionLayer" width="25" height="25">
+ <layer name="collisionLayer" width="25" height="25">
   <properties>
    <property name="collision" value="true"/>
   </properties>
@@ -251,10 +251,7 @@
 73,73,73,73,73,73,73,92,92,92,92,92,0,92,92,92,92,92,92,92,73,73,73,73,73
 </data>
  </layer>
- <layer name="superCollisionLayer" width="25" height="25">
-  <properties>
-   <property name="collision" value="true"/>
-  </properties>
+ <layer name="topLayer" width="25" height="25">
   <data encoding="csv">
 57,57,57,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,57,57,57,
 57,57,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,57,57,

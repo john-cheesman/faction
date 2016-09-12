@@ -57,6 +57,8 @@ export class Battle extends Phaser.State {
 
             combatant = new Combatant(this, playerCombatant.name, playerCombatant.x, playerCombatant.y, playerCombatant.properties);
 
+            combatant.setFollowTarget(enemyCombatants[0]);
+
             playerCombatants.push(combatant);
             this.game.add.existing(combatant);
         });
