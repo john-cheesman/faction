@@ -22,6 +22,13 @@ export class Utility {
             seconds: pad(roundedSeconds % 60)
         };
     }
+
+    static offsetCameraPosition(camera, targetPosition) {
+        targetPosition.x += camera.position.x - (camera.width / 2);
+        targetPosition.y += camera.position.y - (camera.height / 2);
+
+        return targetPosition;
+    }
 }
 
 function pad(val) {

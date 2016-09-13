@@ -8,6 +8,7 @@ import { Stairs } from '../prefabs/stairs';
 import { Storage } from '../storage';
 import { Progress } from '../progress';
 import { PathFinder } from '../../plugins/path-finder';
+import { Utility } from '../utility';
 
 let prefabClasses;
 
@@ -106,7 +107,7 @@ export class Area extends Phaser.State {
     movePlayer() {
         let targetPosition;
 
-        targetPosition = new Phaser.Point(this.game.input.activePointer.x, this.game.input.activePointer.y);
+        targetPosition = Utility.offsetCameraPosition(this.game.camera, new Phaser.Point(this.game.input.activePointer.x, this.game.input.activePointer.y));
 
         this.player.moveTo(targetPosition);
     }
@@ -170,5 +171,9 @@ export class Area extends Phaser.State {
 
     enableInteraction(player, object) {
         object.enableInteraction(player, object);
+    }
+
+    render() {
+        this.player.render();
     }
 }

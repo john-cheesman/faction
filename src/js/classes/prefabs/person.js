@@ -30,8 +30,6 @@ export class Person extends Prefab {
                 });
             }
         }
-
-        console.log(this.inventory);
     }
 
     enableInteraction(player, person) {
@@ -58,7 +56,6 @@ export class Person extends Prefab {
             else {
                 this.position.x = nextPosition.x;
                 this.position.y = nextPosition.y;
-                console.log(this.position);
 
                 if (this.pathStep < this.path.length - 1) {
                     this.pathStep += 1;
@@ -82,12 +79,10 @@ export class Person extends Prefab {
     }
 
     moveTo(targetPosition) {
-        console.log(targetPosition);
         this.gameState.pathFinder.findPath(this.position, targetPosition, this.moveThroughPath, this);
     }
 
     moveThroughPath(path) {
-        console.log(path);
         if (path !== null) {
             this.path = path;
             this.pathStep = 0;

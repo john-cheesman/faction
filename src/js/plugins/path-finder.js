@@ -3,6 +3,8 @@ export class PathFinder extends Phaser.Plugin {
         super(game, parent);
 
         this.easy_star = new EasyStar.js();
+        this.easy_star.enableDiagonals();
+        this.easy_star.disableCornerCutting();
     }
 
     init(world_grid, acceptable_tiles, tile_dimensions) {

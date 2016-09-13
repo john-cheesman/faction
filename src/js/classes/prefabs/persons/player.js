@@ -90,10 +90,12 @@ export class Player extends Person {
 
         this.interactionTarget = null;
 
-        this.body.setSize(24, 24, 4, 16);
+        this.body.setSize(24, 36, 4, 0);
+        this.anchor.setTo(0.5, 0.75);
     }
 
     render() {
-        game.debug.text('velocity: ' + this.body.velocity, 32, 32);
+        this.gameState.game.debug.text('velocity: ' + this.body.velocity, 32, 32);
+        this.gameState.game.debug.text('angle: ' + this.body.angle, 32, 64);
     }
 }
