@@ -3,7 +3,7 @@ import { Person } from '../person';
 export class Player extends Person {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
-        
+
         this.gameState.game.camera.follow(this);
 
         this.interactionTarget = null;
@@ -13,7 +13,6 @@ export class Player extends Person {
     }
 
     render() {
-        this.gameState.game.debug.text('velocity: ' + this.body.velocity, 32, 32);
-        this.gameState.game.debug.text('angle: ' + this.body.angle, 32, 64);
+        this.gameState.game.debug.text('position: ' + this.position, 32, 32);
     }
 }

@@ -98,8 +98,9 @@ export class Area extends Phaser.State {
 
         this.player = this.createObject(player);
 
-        tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
-        this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], tileDimensions);
+        this.tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
+
+        this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], this.tileDimensions);
 
         this.game.input.onDown.add(this.movePlayer, this);
     }
@@ -162,16 +163,7 @@ export class Area extends Phaser.State {
         this.pathfinder.calculatePath();
     }
 
-    update() {
-        this.game.physics.arcade.collide(this.player, this.groups.chests, this.enableInteraction, null, this);
-        this.game.physics.arcade.collide(this.player, this.groups.enemies, this.enableInteraction, null, this);
-        this.game.physics.arcade.collide(this.player, this.layers.subCollisionLayer, this.player.stopMoving, null, this.player);
-        this.game.physics.arcade.collide(this.player, this.layers.superCollisionLayer, this.player.stopMoving, null, this.player);
-    }
-
-    enableInteraction(player, object) {
-        object.enableInteraction(player, object);
-    }
+    update() {}
 
     render() {
         this.player.render();

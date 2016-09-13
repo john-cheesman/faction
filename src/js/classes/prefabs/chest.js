@@ -1,4 +1,5 @@
 import { Prefab } from '../prefab';
+import { Utility } from '../utility';
 import { animations } from '../../constants/animations';
 
 export class Chest extends Prefab {
@@ -10,14 +11,18 @@ export class Chest extends Prefab {
         this.opened = properties.opened === 'true';
 
         this.animations.add('open', animations.chest.open, 10);
-    }
 
-    enableInteraction(player, chest) {
-        player.interactionTarget = chest;
+        this.inputEnabled = true;
+
+        this.events.onInputDown.add(this.interact, this);
     }
 
     interact() {
-        if (!this.opened) {
+        let playerIsAdjacent;
+
+        playerIsAdjacent = Utility.isAdjacent(this.position, this.gameState.player.position, this.gameState.tileDimensions);
+
+        if (!this.opened && playerIsAdjacent) {
             this.animations.play('open');
 
             console.log('You found ' + this.contents);

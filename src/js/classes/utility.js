@@ -29,6 +29,43 @@ export class Utility {
 
         return targetPosition;
     }
+
+    static getCoordFromPoint(point, tileDimensions) {
+        let row,
+            column;
+
+        row = Math.floor(point.y / tileDimensions.y);
+        column = Math.floor(point.x / tileDimensions.x);
+
+        return {row: row, column: column};
+    }
+
+    static getPointFromCoord(coord, tileDimensions) {
+        let x,
+            y;
+
+        x = (coord.column * tileDimensions.x) + (tileDimensions.x / 2);
+        y = (coord.row * tileDimensions.y) + (tileDimensions.y / 2);
+
+        return new Phaser.Point(x, y);
+    }
+
+    static isAdjacent(primaryPosition, secondaryPosition, tileDimensions) {
+        let primaryCoord,
+            secondaryCoord,
+            columnDelta,
+            rowDelta;
+
+        primaryCoord = this.getCoordFromPoint(primaryPosition, tileDimensions);
+        secondaryCoord = this.getCoordFromPoint(secondaryPosition, tileDimensions);
+        columnDelta = primaryCoord.column - secondaryCoord.column;
+        rowDelta = primaryCoord.row - secondaryCoord.row;
+
+        columnDelta *= columnDelta < 0 ? -1 : 1;
+        rowDelta *= rowDelta < 0 ? -1 : 1;
+
+        return (rowDelta === 0 && columnDelta === 1) || (columnDelta === 0 && rowDelta === 1);
+    }
 }
 
 function pad(val) {

@@ -1,3 +1,5 @@
+import { Utility } from '../classes/utility';
+
 export class PathFinder extends Phaser.Plugin {
     constructor(game, parent) {
         super(game, parent);
@@ -34,8 +36,8 @@ export class PathFinder extends Phaser.Plugin {
         let origin_coord,
             target_coord;
 
-        origin_coord = this.getCoordFromPoint(origin);
-        target_coord = this.getCoordFromPoint(target);
+        origin_coord = Utility.getCoordFromPoint(origin, this.tile_dimensions);
+        target_coord = Utility.getCoordFromPoint(target, this.tile_dimensions);
 
         if (!this.outsideGrid(origin_coord) && !this.outsideGrid(target_coord)) {
             this.easy_star.findPath(origin_coord.column, origin_coord.row, target_coord.column, target_coord.row, this.callCallbackFunction.bind(this, callback, context));
@@ -55,7 +57,7 @@ export class PathFinder extends Phaser.Plugin {
 
         if (path !== null) {
             path.forEach(function (path_coord) {
-                path_positions.push(this.getPointFromCoord({row: path_coord.y, column: path_coord.x}));
+                path_positions.push(Utility.getPointFromCoord({row: path_coord.y, column: path_coord.x}, this.tile_dimensions));
             }, this);
         }
 
@@ -64,25 +66,5 @@ export class PathFinder extends Phaser.Plugin {
 
     outsideGrid(coord) {
         return coord.row < 0 || coord.row > this.grid_dimensions.row - 1 || coord.column < 0 || coord.column > this.grid_dimensions.column - 1;
-    }
-
-    getCoordFromPoint(point) {
-        let row,
-            column;
-
-        row = Math.floor(point.y / this.tile_dimensions.y);
-        column = Math.floor(point.x / this.tile_dimensions.x);
-
-        return {row: row, column: column};
-    }
-
-    getPointFromCoord(coord) {
-        let x,
-            y;
-
-        x = (coord.column * this.tile_dimensions.x) + (this.tile_dimensions.x / 2);
-        y = (coord.row * this.tile_dimensions.y) + (this.tile_dimensions.y / 2);
-
-        return new Phaser.Point(x, y);
     }
 }
