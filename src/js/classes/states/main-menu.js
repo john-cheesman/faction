@@ -13,7 +13,7 @@ export class MainMenu extends Phaser.State {
 
         localProgress = Storage.loadLocalProgress();
 
-        this.game.add.text((dimensions.tileSize / 2), (dimensions.tileSize / 2), 'Catacomb', {
+        this.game.add.text((dimensions.tileSize / 2), (dimensions.tileSize / 2), 'Faction', {
             font: '20px Consolas',
             fill: Phaser.Color.getWebRGB(colours.white),
             align: 'left',
