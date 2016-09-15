@@ -95,18 +95,22 @@ export class Person extends Prefab {
                     this.pathStep += 1;
                 }
                 else {
-                    this.path = [];
-                    this.pathStep = -1;
-                    this.body.velocity.x = 0;
-                    this.body.velocity.y = 0;
-                    this.animations.stop();
-                    this.frame = spriteFrames.person[this.direction];
-
-                    if (this.reticule) {
-                        this.reticule.visible = false;
-                    }
+                    this.stopMoving();
                 }
             }
+        }
+    }
+
+    stopMoving() {
+        this.path = [];
+        this.pathStep = -1;
+        this.body.velocity.x = 0;
+        this.body.velocity.y = 0;
+        this.animations.stop();
+        this.frame = spriteFrames.person[this.direction];
+
+        if (this.reticule) {
+            this.reticule.visible = false;
         }
     }
 
@@ -119,7 +123,9 @@ export class Person extends Prefab {
     }
 
     moveTo(targetPosition) {
-        this.gameState.pathFinder.findPath(this.position, targetPosition, this.moveThroughPath, this);
+        if (!this.path.length > 0) {
+            this.gameState.pathFinder.findPath(this.position, targetPosition, this.moveThroughPath, this);
+        }
     }
 
     moveThroughPath(path) {
