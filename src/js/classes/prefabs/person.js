@@ -101,6 +101,10 @@ export class Person extends Prefab {
                     this.body.velocity.y = 0;
                     this.animations.stop();
                     this.frame = spriteFrames.person[this.direction];
+
+                    if (this.reticule) {
+                        this.reticule.visible = false;
+                    }
                 }
             }
         }
@@ -122,9 +126,18 @@ export class Person extends Prefab {
         if (path !== null) {
             this.path = path;
             this.pathStep = 0;
+            this.updateReticule(path[path.length - 1]);
         }
         else {
             this.path = [];
+        }
+
+    }
+
+    updateReticule(position) {
+        if (this.reticule && position) {
+            this.reticule.position = position;
+            this.reticule.visible = true;
         }
     }
 }

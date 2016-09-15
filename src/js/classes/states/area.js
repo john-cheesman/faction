@@ -146,23 +146,6 @@ export class Area extends Phaser.State {
         }
     }
 
-    findPathTo(tilex, tiley) {
-        let map;
-
-        map = this.map;
-
-        this.pathfinder.setCallbackFunction(function(path) {
-            path = path || [];
-            for(var i = 0, ilen = path.length; i < ilen; i++) {
-                map.putTile(46, path[i].x, path[i].y);
-            }
-            blocked = false;
-        });
-
-        this.pathfinder.preparePathCalculation([0,0], [tilex,tiley]);
-        this.pathfinder.calculatePath();
-    }
-
     update() {}
 
     render() {
