@@ -263,8 +263,8 @@
     <property name="frame" type="int" value="121"/>
     <property name="playerDirection" value="down"/>
     <property name="targetArea" value="1a"/>
-    <property name="targetX" type="int" value="576"/>
-    <property name="targetY" type="int" value="64"/>
+    <property name="targetColumn" type="int" value="18"/>
+    <property name="targetRow" type="int" value="2"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>

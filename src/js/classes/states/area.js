@@ -90,8 +90,8 @@ export class Area extends Phaser.State {
         playerPosition = Storage.loadPlayerPosition();
 
         if (playerPosition) {
-            player.x = playerPosition[0];
-            player.y = playerPosition[1];
+            player.x = playerPosition.x;
+            player.y = playerPosition.y;
 
             Storage.clearPlayerPosition();
         }
@@ -114,7 +114,7 @@ export class Area extends Phaser.State {
     }
 
     leaveArea() {
-        Storage.saveParty(this.groups.party);
+        //Storage.saveParty(this.groups.party);
     }
 
     createObject(objectData) {
@@ -146,7 +146,9 @@ export class Area extends Phaser.State {
         }
     }
 
-    update() {}
+    update() {
+        this.game.physics.arcade.collide(this.player, this.layers.collision);
+    }
 
     render() {
         this.player.render();

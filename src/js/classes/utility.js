@@ -51,6 +51,22 @@ export class Utility {
     }
 
     static isAdjacent(primaryPosition, secondaryPosition, tileDimensions) {
+        let deltas;
+
+        deltas = this.compareCoords(primaryPosition, secondaryPosition, tileDimensions);
+
+        return (deltas.rowDelta === 0 && deltas.columnDelta === 1) || (deltas.columnDelta === 0 && deltas.rowDelta === 1);
+    }
+
+    static isOnTop(primaryPosition, secondaryPosition, tileDimensions) {
+        let deltas;
+
+        deltas = this.compareCoords(primaryPosition, secondaryPosition, tileDimensions);
+
+        return deltas.rowDelta === 0 && deltas.columnDelta === 0;
+    }
+
+    static compareCoords(primaryPosition, secondaryPosition, tileDimensions) {
         let primaryCoord,
             secondaryCoord,
             columnDelta,
@@ -64,7 +80,10 @@ export class Utility {
         columnDelta *= columnDelta < 0 ? -1 : 1;
         rowDelta *= rowDelta < 0 ? -1 : 1;
 
-        return (rowDelta === 0 && columnDelta === 1) || (columnDelta === 0 && rowDelta === 1);
+        return {
+            columnDelta: columnDelta,
+            rowDelta: rowDelta
+        };
     }
 }
 

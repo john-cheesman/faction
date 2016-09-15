@@ -142,8 +142,8 @@
                      "frame":122,
                      "playerDirection":"up",
                      "targetArea":"1a-b1",
-                     "targetX":576,
-                     "targetY":64,
+                     "targetColumn":18,
+                     "targetRow":2,
                      "texture":"mapTileset"
                     },
                  "propertytypes":
@@ -152,8 +152,8 @@
                      "frame":"int",
                      "playerDirection":"string",
                      "targetArea":"string",
-                     "targetX":"int",
-                     "targetY":"int",
+                     "targetColumn":"int",
+                     "targetRow":"int",
                      "texture":"string"
                     },
                  "rotation":0,
