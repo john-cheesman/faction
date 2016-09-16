@@ -38,7 +38,8 @@ export class Person extends Prefab {
 
         this.frame = spriteFrames.person[this.direction];
 
-        this.body.setSize(28, 32, 4, 8);
+        this.body.setSize(24, 36, 4, 0);
+        this.anchor.setTo(0.5, 0.75);
 
         this.movementSpeed = 120;
 

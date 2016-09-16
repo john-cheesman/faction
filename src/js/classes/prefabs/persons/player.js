@@ -9,15 +9,12 @@ export class Player extends Person {
 
         this.interactionTarget = null;
 
-        this.body.setSize(24, 36, 4, 0);
-        this.anchor.setTo(0.5, 0.75);
-
         this.reticule = this.gameState.game.add.sprite(0, 0, 'uiSpritesheet', spriteFrames.ui.reticule);
         this.reticule.anchor.setTo(0.5);
         this.reticule.visible = false;
     }
 
     render() {
-        //this.gameState.game.debug.text('position: ' + this.position, 32, 32);
+        //this.gameState.game.debug.text(`position: ${Math.floor(this.position.x)}, ${Math.floor(this.position.y)}`, 32, 32);
     }
 }

@@ -46,7 +46,7 @@ export class Utility {
 
         x = (coord.column * tileDimensions.x) + (tileDimensions.x / 2);
         y = (coord.row * tileDimensions.y) + (tileDimensions.y / 2);
-
+        console.log(new Phaser.Point(x, y));
         return new Phaser.Point(x, y);
     }
 

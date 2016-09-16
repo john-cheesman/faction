@@ -50,7 +50,7 @@ export class Area extends Phaser.State {
         this.map.layers.forEach((layer) => {
             this.layers[layer.name] = this.map.createLayer(layer.name);
 
-            if (layer.properties.collision) {
+            if (layer.properties.collision === true) {
                 this.map.setCollisionByExclusion([], true, this.layers[layer.name]);
                 collisionLayerData = layer.data;
             }
@@ -96,7 +96,9 @@ export class Area extends Phaser.State {
             Storage.clearPlayerPosition();
         }
 
-        this.player = this.createObject(player);
+        //this.player = this.createObject(player);
+
+        this.player = this.game.world.addAt(new Player(this, player.name, player.x, player.y, player.properties), 3);
 
         this.tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
 
