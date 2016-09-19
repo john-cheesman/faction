@@ -2,7 +2,7 @@ import { dimensions } from '../constants/dimensions';
 import { colours } from '../constants/colours';
 
 export class Message {
-    constructor(game, text, frame, key = sprites.tileSet.key) {
+    constructor(game, text, frame, key) {
         let textX,
             textY,
             textWidth;
