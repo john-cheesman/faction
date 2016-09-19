@@ -257,10 +257,10 @@
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
-  <object id="37" name="toGround" type="Stairs" gid="122" x="608" y="96" width="32" height="32">
+  <object id="37" name="to2B" type="Exit" gid="122" x="608" y="96" width="32" height="32">
    <properties>
-    <property name="flipX" type="bool" value="false"/>
     <property name="frame" type="int" value="121"/>
+    <property name="group" value="exits"/>
     <property name="playerDirection" value="down"/>
     <property name="targetArea" value="2b"/>
     <property name="targetColumn" type="int" value="18"/>

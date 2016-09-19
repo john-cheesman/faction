@@ -1,9 +1,9 @@
 {
-    "name": "area-2b-b1",
+    "name": "area-1b",
     "assets": {
         "areaTilemap": {
             "type": "tilemap",
-            "source": "maps/area-2b-b1-map.json"
+            "source": "maps/area-1b-map.json"
         }
     },
     "map": {
@@ -14,8 +14,6 @@
         }
     },
     "groups": [
-        "enemies",
-        "chests",
         "exits"
     ],
     "player": {

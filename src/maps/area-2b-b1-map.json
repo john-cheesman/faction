@@ -76,11 +76,11 @@
                  "gid":122,
                  "height":32,
                  "id":37,
-                 "name":"toGround",
+                 "name":"to2B",
                  "properties":
                     {
-                     "flipX":false,
                      "frame":121,
+                     "group":"exits",
                      "playerDirection":"down",
                      "targetArea":"2b",
                      "targetColumn":18,
@@ -89,8 +89,8 @@
                     },
                  "propertytypes":
                     {
-                     "flipX":"bool",
                      "frame":"int",
+                     "group":"string",
                      "playerDirection":"string",
                      "targetArea":"string",
                      "targetColumn":"int",
@@ -98,7 +98,7 @@
                      "texture":"string"
                     },
                  "rotation":0,
-                 "type":"Stairs",
+                 "type":"Exit",
                  "visible":true,
                  "width":32,
                  "x":608,

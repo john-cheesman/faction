@@ -13,7 +13,9 @@
             "key": "mapTileset"
         }
     },
-    "groups": [],
+    "groups": [
+        "exits"
+    ],
     "player": {
         "x": 416,
         "y": 416,

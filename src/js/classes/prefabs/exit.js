@@ -2,7 +2,7 @@ import { Prefab } from '../prefab';
 import { Storage } from '../storage';
 import { Utility } from '../utility';
 
-export class Stairs extends Prefab {
+export class Exit extends Prefab {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
 

@@ -4,7 +4,7 @@ import { Enemy } from '../prefabs/persons/enemy';
 import { Combatant } from '../prefabs/persons/combatant';
 import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
-import { Stairs } from '../prefabs/stairs';
+import { Exit } from '../prefabs/exit';
 import { Storage } from '../storage';
 import { Progress } from '../progress';
 import { PathFinder } from '../../plugins/path-finder';
@@ -19,7 +19,7 @@ prefabClasses = {
     Combatant: Combatant,
     Chest: Chest,
     Fire: Fire,
-    Stairs: Stairs
+    Exit: Exit
 };
 
 export class Area extends Phaser.State {
@@ -48,11 +48,13 @@ export class Area extends Phaser.State {
         this.layers = {};
 
         this.map.layers.forEach((layer) => {
-            this.layers[layer.name] = this.map.createLayer(layer.name);
+            if (!layer.properties.top) {
+                this.layers[layer.name] = this.map.createLayer(layer.name);
 
-            if (layer.properties.collision === true) {
-                this.map.setCollisionByExclusion([], true, this.layers[layer.name]);
-                collisionLayerData = layer.data;
+                if (layer.properties.collision === true) {
+                    this.map.setCollisionByExclusion([], true, this.layers[layer.name]);
+                    collisionLayerData = layer.data;
+                }
             }
         }, this);
 
@@ -61,7 +63,7 @@ export class Area extends Phaser.State {
         this.groups = {};
 
         this.areaData.groups.forEach((groupName) => {
-            this.groups[groupName] = this.game.add.physicsGroup(Phaser.Physics.ARCADE);
+            this.groups[groupName] = this.game.world.addAt(new Phaser.Group(this.game, null, groupName, false, true, Phaser.Physics.ARCADE), 3);
         }, this);
 
         this.prefabs = {};
@@ -96,15 +98,19 @@ export class Area extends Phaser.State {
             Storage.clearPlayerPosition();
         }
 
-        //this.player = this.createObject(player);
-
-        this.player = this.game.world.addAt(new Player(this, player.name, player.x, player.y, player.properties), 3);
+        this.player = this.createObject(player);
 
         this.tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
 
         this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], this.tileDimensions);
 
         this.game.input.onDown.add(this.movePlayer, this);
+
+        this.map.layers.forEach((layer) => {
+            if (layer.properties.top) {
+                this.layers[layer.name] = this.map.createLayer(layer.name);
+            }
+        }, this);
     }
 
     movePlayer() {
