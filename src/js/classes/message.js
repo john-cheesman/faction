@@ -41,9 +41,6 @@ export class Message {
         this.ground.beginFill(colours.black, 0.85);
         this.ground.drawRect(0, (dimensions.gameHeight - (dimensions.tileSize * 2)), dimensions.gameWidth, (dimensions.tileSize * 2));
 
-    }
-
-    display(duration = 1000) {
         this.game.add.existing(this.ground);
         this.game.add.existing(this.text);
 
@@ -51,15 +48,26 @@ export class Message {
             this.game.add.existing(this.sprite);
         }
 
+        this.hide();
+
+    }
+
+    display(duration = 1000) {
+        this.text.visible = true;
+        this.ground.visible = true;
+
+        if (this.sprite) {
+            this.sprite.visible = true;
+        }
         this.game.time.events.add(duration, this.hide, this);
     }
 
     hide() {
-        this.text.destroy();
-        this.ground.destroy();
+        this.text.visible = false;
+        this.ground.visible = false;
 
         if (this.sprite) {
-            this.sprite.destroy();
+            this.sprite.visible = false;
         }
     }
 

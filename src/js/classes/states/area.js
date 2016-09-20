@@ -5,6 +5,7 @@ import { Combatant } from '../prefabs/persons/combatant';
 import { Chest } from '../prefabs/chest';
 import { Fire } from '../prefabs/fire';
 import { Exit } from '../prefabs/exit';
+import { Sign } from '../prefabs/sign';
 import { Storage } from '../storage';
 import { Progress } from '../progress';
 import { PathFinder } from '../../plugins/path-finder';
@@ -19,7 +20,8 @@ prefabClasses = {
     Combatant: Combatant,
     Chest: Chest,
     Fire: Fire,
-    Exit: Exit
+    Exit: Exit,
+    Sign: Sign
 };
 
 export class Area extends Phaser.State {

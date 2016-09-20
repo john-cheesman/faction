@@ -14,7 +14,8 @@
         }
     },
     "groups": [
-        "exits"
+        "exits",
+        "signs"
     ],
     "player": {
         "x": 416,
