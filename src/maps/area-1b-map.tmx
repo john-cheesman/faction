@@ -162,6 +162,9 @@
   </tile>
  </tileset>
  <layer name="subGroundLayer" width="25" height="25">
+  <properties>
+   <property name="interaction" type="bool" value="false"/>
+  </properties>
   <data encoding="csv">
 126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,
 31,31,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,

@@ -16,7 +16,8 @@
     "groups": [
         "enemies",
         "chests",
-        "exits"
+        "exits",
+        "signs"
     ],
     "player": {
         "x": 432,

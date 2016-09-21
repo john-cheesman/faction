@@ -5,6 +5,14 @@
          "height":25,
          "name":"subGroundLayer",
          "opacity":1,
+         "properties":
+            {
+             "interaction":false
+            },
+         "propertytypes":
+            {
+             "interaction":"bool"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":25,
@@ -273,6 +281,32 @@
                  "width":32,
                  "x":768,
                  "y":416
+                }, 
+                {
+                 "gid":90,
+                 "height":32,
+                 "id":42,
+                 "name":"sign1",
+                 "properties":
+                    {
+                     "frame":89,
+                     "group":"signs",
+                     "message":"North: To the cliffs|South: To the forest",
+                     "texture":"mapTileset"
+                    },
+                 "propertytypes":
+                    {
+                     "frame":"int",
+                     "group":"string",
+                     "message":"string",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"Sign",
+                 "visible":true,
+                 "width":32,
+                 "x":352,
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -300,7 +334,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":42,
+ "nextobjectid":43,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,

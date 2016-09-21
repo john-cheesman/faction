@@ -5,6 +5,14 @@
          "height":25,
          "name":"subGroundLayer",
          "opacity":1,
+         "properties":
+            {
+             "interaction":false
+            },
+         "propertytypes":
+            {
+             "interaction":"bool"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":25,
@@ -385,7 +393,7 @@
                     {
                      "frame":89,
                      "group":"signs",
-                     "message":"Keep away from the cliff edge",
+                     "message":"Please keep away from the cliff edge...|...it's a very long way down you know!",
                      "texture":"mapTileset"
                     },
                  "propertytypes":

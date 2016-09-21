@@ -106,11 +106,17 @@ export class Area extends Phaser.State {
 
         this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], this.tileDimensions);
 
-        this.game.input.onDown.add(this.movePlayer, this);
+        this.layers['subGroundLayer'].inputEnabled = true;
+        this.layers['subGroundLayer'].events.onInputDown.add(this.movePlayer, this);
 
         this.map.layers.forEach((layer) => {
             if (layer.properties.top) {
                 this.layers[layer.name] = this.map.createLayer(layer.name);
+            }
+
+            if (layer.properties.interaction) {
+                this.layers[layer.name].inputEnabled = true;
+                this.layers[layer.name].events.onInputDown.add(this.movePlayer, this);
             }
         }, this);
     }

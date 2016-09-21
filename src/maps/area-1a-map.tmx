@@ -162,6 +162,9 @@
   </tile>
  </tileset>
  <layer name="subGroundLayer" width="25" height="25">
+  <properties>
+   <property name="interaction" type="bool" value="false"/>
+  </properties>
   <data encoding="csv">
 126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,
 126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,126,31,
@@ -366,7 +369,7 @@
    <properties>
     <property name="frame" type="int" value="89"/>
     <property name="group" value="signs"/>
-    <property name="message" value="Keep away from the cliff edge"/>
+    <property name="message" value="Please keep away from the cliff edge...|...it's a very long way down you know!"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>

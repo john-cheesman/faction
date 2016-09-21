@@ -6,20 +6,21 @@ export class Sign extends Prefab {
     constructor(gameState, name, x, y, properties) {
         super(gameState, name, x, y, properties);
 
-        this.message = new Message(this.gameState.game, properties.message);
-
         this.inputEnabled = true;
+
+        this.message = properties.message.split('|');
 
         this.events.onInputDown.add(this.interact, this);
     }
 
     interact() {
-        let playerIsAdjacent;
+        let playerIsAdjacent,
+        messagemessage;
 
         playerIsAdjacent = Utility.isAdjacent(this.position, this.gameState.player.position, this.gameState.tileDimensions);
 
         if (playerIsAdjacent) {
-            this.message.display();
+            Message.create(this.gameState.game, this.message);
         }
     }
 }
