@@ -1,4 +1,5 @@
 import { Prefab } from '../prefab';
+import { Message } from '../message';
 import { Utility } from '../utility';
 import { animations } from '../../constants/animations';
 
@@ -25,7 +26,7 @@ export class Chest extends Prefab {
         if (!this.opened && playerIsAdjacent) {
             this.animations.play('open');
 
-            console.log('You found ' + this.contents);
+            Message.create(this.gameState.game, `You found ${this.contents}`);
 
             this.opened = true;
         }

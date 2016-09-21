@@ -1,5 +1,6 @@
 import { dimensions } from '../constants/dimensions';
 import { colours } from '../constants/colours';
+import { spriteFrames } from '../constants/sprite-frames';
 
 export class Message {
     constructor(game, text, frame, key) {
@@ -9,11 +10,13 @@ export class Message {
             textList;
 
         this.game = game;
+        this.overlay = new Phaser.Graphics(this.game);
         this.ground = new Phaser.Graphics(this.game);
         this.pages = [];
         this.currentPage = 0;
 
-        this.nextControl = new Phaser.Button(game, (dimensions.gameWidth - (dimensions.tileSize * 1.5)), (dimensions.gameHeight - (dimensions.tileSize / 2)), 'mapTileset', this.displayNextPage, this, 0, 0, 0, 0);
+        this.nextControl = new Phaser.Button(game, (dimensions.gameWidth - (dimensions.tileSize * 1.5)), (dimensions.gameHeight - (dimensions.tileSize / 2)), 'uiSpritesheet', this.displayNextPage, this);
+        this.nextControl.frame = spriteFrames.ui.caretDown;
         this.nextControl.fixedToCamera = true;
         this.nextControl.anchor.setTo(0, 1);
 
@@ -55,12 +58,23 @@ export class Message {
 
         this.ground.beginFill(colours.black, 0.85);
         this.ground.drawRect(0, (dimensions.gameHeight - (dimensions.tileSize * 2)), dimensions.gameWidth, (dimensions.tileSize * 2));
+
+        this.overlay.fixedToCamera = true;
+
+        this.overlay.beginFill(colours.black, 0.3);
+        this.overlay.drawRect(0, 0, dimensions.gameWidth, dimensions.gameHeight);
+        this.overlay.inputEnabled = true;
     }
 
     display() {
         this.game.add.existing(this.ground);
+        this.game.add.existing(this.overlay);
         this.game.add.existing(this.pages[0]);
         this.game.add.existing(this.nextControl);
+
+        if (this.currentPage === (this.pages.length - 1)) {
+            this.nextControl.frame =  spriteFrames.ui.cross;
+        }
 
         if (this.sprite) {
             this.game.add.existing(this.sprite);
@@ -76,12 +90,17 @@ export class Message {
             this.destroy();
         }
         else {
+            if (this.currentPage === (this.pages.length - 1)) {
+                this.nextControl.frame =  spriteFrames.ui.cross;
+            }
+
             this.game.add.existing(this.pages[this.currentPage]);
         }
     }
 
     destroy() {
         this.ground.destroy();
+        this.overlay.destroy();
         this.nextControl.destroy();
 
         this.pages.forEach((page) => {

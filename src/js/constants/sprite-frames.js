@@ -6,6 +6,11 @@ export const spriteFrames = {
         left: 31
     },
     ui: {
-        reticule: 1
+        reticule: 0,
+        caretLeft: 1,
+        caretRight: 2,
+        caretDown: 3,
+        caretUp: 4,
+        cross: 5
     }
 };

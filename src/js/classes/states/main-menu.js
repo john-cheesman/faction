@@ -21,6 +21,8 @@ export class MainMenu extends Phaser.State {
             wordWrapWidth: (dimensions.gameWidth - dimensions.tileSize)
         });
 
+        this.game.add.button(100, 100, 'uiSpritesheet', () => {this.game.state.start('Boot', true, false, 'data/area/area-1a-data.json', 'Area');}, this, 1, 1, 1, 1);
+
         menuItems = [
             {
                 text: 'Start',

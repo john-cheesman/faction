@@ -14,8 +14,7 @@ export class Sign extends Prefab {
     }
 
     interact() {
-        let playerIsAdjacent,
-        messagemessage;
+        let playerIsAdjacent;
 
         playerIsAdjacent = Utility.isAdjacent(this.position, this.gameState.player.position, this.gameState.tileDimensions);
 
