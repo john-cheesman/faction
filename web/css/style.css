@@ -2,10 +2,19 @@ html {
     background-color: #000;
 }
 
-.game-screen {
-    margin: 40px 0;
+body {
+    margin: 0;
 }
 
-.game-screen canvas {
-    margin: 0 auto;
+.game-screen {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.full-screen-control {
+    position: absolute;
+    top: 1em;
+    left: 1em;
 }
