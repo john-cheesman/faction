@@ -3,8 +3,8 @@ import { Message } from '../message';
 import { Utility } from '../utility';
 
 export class Sign extends Prefab {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.inputEnabled = true;
 

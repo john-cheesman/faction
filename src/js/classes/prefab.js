@@ -1,10 +1,11 @@
 export class Prefab extends Phaser.Sprite {
-    constructor(gameState, name, x, y, properties) {
+    constructor(gameState, name, x, y, properties, visible = true) {
         super(gameState.game, x, y, properties.texture, parseInt(properties.frame, 10));
 
         this.gameState = gameState;
         this.name = name;
         this.textureName = properties.texture;
+        this.alpha = visible ? 1 : 0;
 
         if (properties.flipX) {
             this.anchor.setTo(0.5, 0);

@@ -2,8 +2,8 @@ import { Person } from '../person';
 import { spriteFrames } from '../../../constants/sprite-frames';
 
 export class Player extends Person {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.gameState.game.camera.follow(this);
 

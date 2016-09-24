@@ -4,8 +4,8 @@ import { Utility } from '../utility';
 import { animations } from '../../constants/animations';
 
 export class Chest extends Prefab {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.contents = properties.contents;
         this.quantity = properties.quantity;

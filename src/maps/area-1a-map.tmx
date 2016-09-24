@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="68">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="85">
  <tileset firstgid="1" name="tiny_32" tilewidth="32" tileheight="32" tilecount="256" columns="16">
   <image source="../images/tiny_32.png" width="512" height="512"/>
   <tile id="8">
@@ -196,7 +196,7 @@
  <layer name="superGroundLayer" width="25" height="25">
   <data encoding="csv">
 128,128,128,128,128,128,128,128,128,127,127,128,127,128,127,128,127,127,127,128,127,127,128,128,0,
-127,128,128,127,128,127,127,127,128,128,127,127,127,128,127,127,127,128,127,127,127,127,128,0,0,
+127,128,128,127,128,127,127,127,128,128,127,127,127,128,127,127,127,128,127,127,127,127,128,0,84,
 128,127,128,128,128,128,127,127,127,128,128,127,127,127,127,128,127,127,127,127,128,127,0,84,0,
 127,127,128,127,127,127,127,127,127,128,127,127,127,127,127,128,127,128,127,127,0,0,84,0,0,
 128,127,127,127,128,128,128,128,127,128,128,128,127,127,127,127,127,0,0,0,84,85,0,0,0,
@@ -255,109 +255,17 @@
 </data>
  </layer>
  <objectgroup name="objectLayer">
-  <object id="38" name="to1B" type="Exit" gid="31" x="768" y="160" width="32" height="32">
+  <object id="67" name="sign1" type="Sign" gid="90" x="576" y="224" width="32" height="32">
    <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="4"/>
+    <property name="frame" type="int" value="89"/>
+    <property name="group" value="signs"/>
+    <property name="message" value="Please keep away from the cliff edge...|...it's a very long way down you know!"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
-  <object id="42" name="to1B" type="Exit" gid="31" x="768" y="128" width="32" height="32">
+  <object id="68" name="to1B" type="Exit" gid="1" x="768" y="64" width="32" height="32">
    <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="3"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="43" name="to1B" type="Exit" gid="31" x="768" y="96" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="2"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="44" name="to1B" type="Exit" gid="31" x="768" y="256" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="7"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="46" name="to1B" type="Exit" gid="31" x="768" y="224" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="6"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="47" name="to1B" type="Exit" gid="31" x="768" y="288" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="8"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="48" name="to1B" type="Exit" gid="31" x="768" y="320" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="30"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="9"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="50" name="to1B" type="Exit" gid="32" x="768" y="384" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="31"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="11"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="60" name="to1B" type="Exit" gid="32" x="768" y="416" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="31"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="12"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="61" name="to1B" type="Exit" gid="32" x="768" y="512" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="31"/>
-    <property name="group" value="exits"/>
-    <property name="targetArea" value="1b"/>
-    <property name="targetColumn" type="int" value="1"/>
-    <property name="targetRow" type="int" value="15"/>
-    <property name="texture" value="mapTileset"/>
-   </properties>
-  </object>
-  <object id="62" name="to1B" type="Exit" gid="84" x="768" y="64" width="32" height="32">
-   <properties>
-    <property name="frame" type="int" value="83"/>
+    <property name="frame" type="int" value="0"/>
     <property name="group" value="exits"/>
     <property name="targetArea" value="1b"/>
     <property name="targetColumn" type="int" value="1"/>
@@ -365,11 +273,133 @@
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>
-  <object id="67" name="sign1" type="Sign" gid="90" x="576" y="224" width="32" height="32">
+  <object id="69" name="to1B" type="Exit" gid="1" x="768" y="96" width="32" height="32">
    <properties>
-    <property name="frame" type="int" value="89"/>
-    <property name="group" value="signs"/>
-    <property name="message" value="Please keep away from the cliff edge...|...it's a very long way down you know!"/>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="2"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="70" name="to1B" type="Exit" gid="1" x="768" y="128" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="3"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="71" name="to1B" type="Exit" gid="1" x="768" y="160" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="4"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="72" name="to1B" type="Exit" gid="1" x="768" y="224" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="6"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="73" name="to1B" type="Exit" gid="1" x="768" y="256" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="7"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="74" name="to1B" type="Exit" gid="1" x="768" y="288" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="8"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="75" name="to1B" type="Exit" gid="1" x="768" y="320" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="9"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="76" name="to1B" type="Exit" gid="1" x="768" y="384" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="11"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="77" name="to1B" type="Exit" gid="1" x="768" y="416" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="12"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="78" name="to1B" type="Exit" gid="1" x="768" y="480" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="14"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="80" name="to1B" type="Exit" gid="1" x="768" y="512" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="15"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="81" name="to1B" type="Exit" gid="1" x="768" y="544" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="16"/>
+    <property name="texture" value="mapTileset"/>
+   </properties>
+  </object>
+  <object id="83" name="to1B" type="Exit" gid="1" x="768" y="608" width="32" height="32">
+   <properties>
+    <property name="frame" type="int" value="0"/>
+    <property name="group" value="exits"/>
+    <property name="targetArea" value="1b"/>
+    <property name="targetColumn" type="int" value="1"/>
+    <property name="targetRow" type="int" value="18"/>
     <property name="texture" value="mapTileset"/>
    </properties>
   </object>

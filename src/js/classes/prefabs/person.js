@@ -31,8 +31,8 @@ function getDirection(angle) {
 }
 
 export class Person extends Prefab {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.direction = properties.direction || 'down';
 

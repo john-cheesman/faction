@@ -6,8 +6,8 @@ import { Equipment } from '../../equipment';
 import { equippableItems } from '../../../constants/equippable-items';
 
 export class Combatant extends Person {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.xp = properties.xp;
         this.job = new Job(properties.job);

@@ -3,8 +3,8 @@ import { Storage } from '../storage';
 import { Utility } from '../utility';
 
 export class Exit extends Prefab {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.targetArea = properties.targetArea;
         this.hidden = properties.hidden;

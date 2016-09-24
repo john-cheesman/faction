@@ -1,8 +1,8 @@
 import { Person } from '../person';
 
 export class Enemy extends Person {
-    constructor(gameState, name, x, y, properties) {
-        super(gameState, name, x, y, properties);
+    constructor(gameState, name, x, y, properties, visible) {
+        super(gameState, name, x, y, properties, visible);
 
         this.battle = properties.battle;
     }

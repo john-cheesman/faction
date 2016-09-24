@@ -137,7 +137,7 @@ export class Area extends Phaser.State {
         let prefab;
 
         if (prefabClasses.hasOwnProperty(objectData.type)) {
-            prefab = new prefabClasses[objectData.type](this, objectData.name, objectData.x, objectData.y, objectData.properties);
+            prefab = new prefabClasses[objectData.type](this, objectData.name, objectData.x, objectData.y, objectData.properties, objectData.visible);
 
             if (objectData.properties.group) {
                 this.addObjectToGroup(prefab, objectData.properties.group);
