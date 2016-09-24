@@ -3,5 +3,5 @@ web/js
 web/images
 web/maps
 web/data
-.apk
-.zip
+*.apk
+*.zip
