@@ -1,0 +1,54 @@
+{
+    "name": "area-2b",
+    "assets": {
+        "areaTilemap": {
+            "type": "tilemap",
+            "source": "maps/area-2b-map.json"
+        }
+    },
+    "map": {
+        "key": "areaTilemap",
+        "tilesetImage": {
+            "name": "tiny_32",
+            "key": "mapTileset"
+        }
+    },
+    "groups": [
+        "enemies",
+        "chests",
+        "exits",
+        "signs"
+    ],
+    "player": {
+        "x": 432,
+        "y": 432,
+        "type": "Player",
+        "properties": {
+            "texture": "shadowSpritesheet",
+            "inventory": {
+                "equippableItems": [
+                    "dagger",
+                    "dagger",
+                    "woodenShield"
+                ]
+            }
+        }
+    },
+    "enemies": [
+        {
+            "name": "Felix",
+            "x": 560,
+            "y": 144,
+            "properties": {
+                "texture": "soldierSpritesheet",
+                "inventory": {
+                    "equippableItems": [
+                        "dagger",
+                        "dagger"
+                    ]
+                },
+                "battle": "soldiers"
+            }
+        }
+    ]
+}
