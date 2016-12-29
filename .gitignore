@@ -1,7 +1,9 @@
 node_modules
-web/js
-web/images
-web/maps
-web/data
+npm-debug.log
+dist/js
+dist/images
+dist/maps
+dist/data
 *.apk
 *.zip
+.env
