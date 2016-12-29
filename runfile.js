@@ -10,7 +10,8 @@ const dataOutput = `../../dist/data`;
 const task = {
     'build:scripts': () => {
         run(`rimraf dist/js && mkdirp dist/js`);
-        run(`cpy node_modules/phaser/build/phaser.min.js ${vendorScriptsOutput}`);
+        run(`cpy node_modules/phaser/build/phaser.js ${vendorScriptsOutput}`);
+        run(`cpy node_modules/easystarjs/bin/easystar-0.3.1.js ${vendorScriptsOutput}`);
 
         if (process.env.NODE_ENV === `production`) {
             run(`browserify src/ts/index.ts -p [ tsify ] -t uglifyify > ${scriptsOutput}`);

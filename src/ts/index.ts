@@ -1,5 +1,3 @@
-// import { Game } from './classes/game';
+import Game from './models/game';
 
-// new Game();
-
-console.log('yo yo yo');
+new Game();
