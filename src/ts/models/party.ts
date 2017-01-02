@@ -1,16 +1,15 @@
-function scaleCombatantXP(combatant, xpFactor) {
+import Combatant from './prefabs/persons/combatant';
+
+function scaleCombatantXP(combatant: Combatant, xpFactor: number) {
     combatant.xp *= xpFactor;
 
     return combatant;
 }
 
 export default class Party {
-    constructor(name, combatants, xpFactor = null) {
-        this.name = name;
-        this.combatants = combatants;
-
+    constructor(public name: string, public combatants: Combatant[], public xpFactor: number = null) {
         if (xpFactor) {
-            let combatant;
+            let combatant: Combatant;
 
             this.combatants.forEach((combatant) => {
                 combatant = scaleCombatantXP(combatant, xpFactor);
@@ -18,7 +17,7 @@ export default class Party {
         }
     }
 
-    addCombatant(combatant) {
+    addCombatant(combatant: Combatant) {
         this.combatants.push(combatant);
     }
 }

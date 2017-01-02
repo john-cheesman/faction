@@ -1,4 +1,9 @@
-function save(key, data) {
+import Equipment from './equipment';
+import Combatant from './prefabs/persons/combatant';
+import Party from './party';
+import Progress from './progress';
+
+function save(key: string, data: any) {
     let json;
 
     json = JSON.stringify(data);
@@ -14,7 +19,7 @@ function load(key) {
     return JSON.parse(json);
 }
 
-function mapEquipment(equipment) {
+function mapEquipment(equipment: Equipment) {
     return {
         head: equipment.head ? equipment.head.id : null,
         body: equipment.body ? equipment.body.id : null,
@@ -24,9 +29,9 @@ function mapEquipment(equipment) {
     };
 }
 
-function mapParty(party) {
-    let partyData,
-        partyMember;
+function mapParty(party: Party) {
+    let partyData: any,
+        partyMember: Combatant;
 
     partyData = {
         name: party.name,
@@ -76,7 +81,7 @@ export default class Storage {
         localStorage.removeItem('FactionPlayerPosition');
     }
 
-    static saveLocalProgress(progress) {
+    static saveLocalProgress(progress: Progress) {
         let progressData;
 
         progressData = {

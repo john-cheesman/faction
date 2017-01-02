@@ -1,6 +1,6 @@
+import Party from './party';
+
 export default class Progress {
-    constructor(area, party) {
-        this.area = area;
-        this.party = party;
+    constructor(public area: string, public party: Party) {
     }
 }

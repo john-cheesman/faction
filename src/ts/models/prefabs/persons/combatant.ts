@@ -31,6 +31,8 @@ export default class Combatant extends Person {
         console.log(this.equipment.unequipItem('secondaryHand'));
     }
 
+    public xp: number;
+
     get level() {
         return Experience.getLevelForXP(this.xp);
     }

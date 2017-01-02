@@ -1,71 +1,115 @@
+import EquipmentData from './equipmentData';
+import EquippableItem from './items/equippable-item';
 import EquipmentType from '../enums/equipment-type';
 
 export default class Equipment {
-    constructor(equipmentData) {
+    private _equipment: EquipmentData;
+
+    constructor(equipmentData: EquipmentData) {
         if (equipmentData) {
-            this.head = equipmentData.head;
-            this.body = equipmentData.body;
-            this.primaryHand = equipmentData.primaryHand;
-            this.secondaryHand = equipmentData.secondaryHand;
-            this.feet = equipmentData.feet;
+            this._equipment = equipmentData;
         }
     }
 
-    equipItem(item) {
-        let previousItem;
+    get head(): EquippableItem {
+        return this._equipment.head;
+    }
 
-        if (item) {
-            switch (item.equipmentType) {
-                case EquipmentType.Head:
-                    previousItem = this.head;
-                    this.head = item;
-                    break;
+    set head(value) {
+        this._equipment.head = value;
+    }
 
-                case EquipmentType.Body:
-                    previousItem = this.head;
-                    this.body = item;
-                    break;
+    get body(): EquippableItem {
+        return this._equipment.body;
+    }
 
-                case EquipmentType.Feet:
-                    previousItem = this.feet;
-                    this.feet = item;
-                    break;
+    set body(value) {
+        this._equipment.body = value;
+    }
 
-                case EquipmentType.OneHanded:
-                    if (!this.primaryHand) {
-                        this.primaryHand = item;
-                    }
-                    else if (this.primaryHand.equipmentType === EquipmentType.TwoHanded) {
-                        return;
-                    }
-                    else {
-                        previousItem = this.secondaryHand;
-                        this.secondaryHand = item;
-                    }
-                    break;
+    get primaryHand(): EquippableItem {
+        return this._equipment.primaryHand;
+    }
 
-                case EquipmentType.TwoHanded:
-                    if (this.primaryHand && this.primaryHand.equipmentType === EquipmentType.TwoHanded) {
-                        return;
-                    }
-
-                    previousItem = this.secondaryHand;
-                    this.secondaryHand = item;
-                    break;
-            }
+    set primaryHand(value) {
+        if (value.equipmentType === 'OneHanded' || (value.equipmentType === 'TwoHanded' && this.secondaryHand === null)) {
+            this._equipment.primaryHand = value;
         }
-
-        return previousItem;
     }
 
-    unequipItem(itemType) {
-        let previousItem;
-
-        previousItem = this[itemType];
-        this[itemType] = null;
-
-        return previousItem;
+    get secondaryHand(): EquippableItem {
+        return this._equipment.secondaryHand;
     }
+
+    set secondaryHand(value) {
+        if (value.equipmentType === 'OneHanded' && this.primaryHand !== null && this.primaryHand.equipmentType !== 'TwoHanded') {
+            this._equipment.secondaryHand = value;
+        }
+    }
+
+    get feet(): EquippableItem {
+        return this._equipment.feet;
+    }
+
+    set feet(value) {
+        this._equipment.feet = value;
+    }
+
+    // equipItem(item: EquippableItem) {
+    //     let previousItem;
+
+    //     if (item) {
+    //         switch (item.equipmentType) {
+    //             case 'Head':
+    //                 previousItem = this.head;
+    //                 this.head = item;
+    //                 break;
+
+    //             case 'Body':
+    //                 previousItem = this.head;
+    //                 this.body = item;
+    //                 break;
+
+    //             case 'Feet':
+    //                 previousItem = this.feet;
+    //                 this.feet = item;
+    //                 break;
+
+    //             case 'OneHanded':
+    //                 if (!this.primaryHand) {
+    //                     this.primaryHand = item;
+    //                 }
+    //                 else if (this.primaryHand.equipmentType === 'TwoHanded') {
+    //                     return;
+    //                 }
+    //                 else {
+    //                     previousItem = this.secondaryHand;
+    //                     this.secondaryHand = item;
+    //                 }
+    //                 break;
+
+    //             case 'TwoHanded':
+    //                 if (this.primaryHand && this.primaryHand.equipmentType === 'TwoHanded') {
+    //                     return;
+    //                 }
+
+    //                 previousItem = this.secondaryHand;
+    //                 this.secondaryHand = item;
+    //                 break;
+    //         }
+    //     }
+
+    //     return previousItem;
+    // }
+
+    // unequipItem(itemType) {
+    //     let previousItem;
+
+    //     previousItem = this[itemType];
+    //     this[itemType] = null;
+
+    //     return previousItem;
+    // }
 
     get combinedStats() {
         let stats,

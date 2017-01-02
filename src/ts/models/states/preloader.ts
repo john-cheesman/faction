@@ -2,16 +2,18 @@ import { dimensions } from '../../constants/dimensions';
 import { animations } from '../../constants/animations';
 
 export default class Preloader extends Phaser.State {
-    init(dataObject, nextState) {
+    public dataObject: any;
+    public nextState: string;
+
+    init(dataObject: any, nextState: string) {
         this.dataObject = dataObject;
         this.nextState = nextState;
     }
 
     preload() {
-        let assets,
-            assetLoader,
-            assetKey,
-            asset;
+        let assets: any[],
+            assetKey: string,
+            asset: any;
 
         assets = this.dataObject.assets;
 
@@ -40,6 +42,6 @@ export default class Preloader extends Phaser.State {
     }
 
     create() {
-        this.state.start(this.nextState, true, false, this.dataObject);
+        this.game.state.start(this.nextState, true, false, this.dataObject);
     }
 }

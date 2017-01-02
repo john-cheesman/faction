@@ -7,7 +7,7 @@ import { newGameProgress } from '../../constants/new-game-progress';
 
 export default class MainMenu extends Phaser.State {
     create() {
-        let localProgress,
+        let localProgress: Progress,
             menuItems,
             newGameLocalProgress;
 
