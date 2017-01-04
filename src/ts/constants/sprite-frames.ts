@@ -1,4 +1,4 @@
-export const spriteFrames = {
+export const spriteFrames: any = {
     person: {
         up: 1,
         right: 11,

@@ -1,4 +1,4 @@
-export const animations = {
+export const animations: any = {
     person: {
         walk: {
             up: [0, 1, 2, 1],

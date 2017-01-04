@@ -1,4 +1,4 @@
-export const newGameProgress = {
+export const newGameProgress: any = {
     area: 'area-1a',
     party: {
         name: 'player',

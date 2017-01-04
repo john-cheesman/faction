@@ -1,20 +1,24 @@
+import EquippableItemData from '../equippableItemData';
+import EquipmentType from '../../enums/equipment-type';
 import Item from '../item';
 import { equippableItems } from '../../constants/equippable-items';
 
 export default class EquippableItem extends Item {
-    constructor(equipmentData) {
-        super(equipmentData.id, equipmentData.name, equipmentData.description, equipmentData.baseValue);
+    private _equippableItemData: EquippableItemData;
 
-        this.equipmentType = equipmentData.equipmentType;
-        this.isEquipped = false;
-        this.attack = equipmentData.attack;
-        this.defence = equipmentData.defence;
-        this.evasion = equipmentData.evasion;
-        this.accuracy = equipmentData.accuracy;
-        this.speed = equipmentData.speed;
+    constructor(equippableItemData: EquippableItemData) {
+        super(equippableItemData.id, equippableItemData.name, equippableItemData.description, equippableItemData.baseValue);
+
+        this._equippableItemData = equippableItemData;
     }
 
-    static instantiateFromString(type) {
+    public isEquipped: boolean = false;
+
+    get equipmentType(): EquipmentType {
+        return this._equippableItemData.equipmentType;
+    }
+
+    static instantiateFromString(type: string) {
         let itemData;
 
         itemData = equippableItems[type];

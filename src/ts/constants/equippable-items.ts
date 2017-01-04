@@ -1,12 +1,10 @@
-import { EquipmentType } from '../enums/equipment-type';
-
-export const equippableItems = {
+export const equippableItems: any = {
     dagger: {
         id: 'dagger',
         name: 'Dagger',
         description: 'A short double-bladed knife',
         baseValue: 20,
-        equipmentType: EquipmentType.OneHanded,
+        equipmentType: 'OneHanded',
         attack: 10,
         accuracy: 0,
         defence: 0,
@@ -18,7 +16,7 @@ export const equippableItems = {
         name: 'Wooden Shield',
         description: 'A lightweight wooden shield',
         baseValue: 30,
-        equipmentType: EquipmentType.OneHanded,
+        equipmentType: 'OneHanded',
         attack: 0,
         accuracy: 0,
         defence: 20,

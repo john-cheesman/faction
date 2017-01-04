@@ -1,4 +1,4 @@
-export const jobStats = {
+export const jobStats: any = {
     shadow: {
         strength: 7,
         vitality: 6,
