@@ -1,9 +1,9 @@
-import Menu from '../menu';
-import Storage from '../storage';
-import Progress from '../progress';
-import { colours } from '../../constants/colours';
-import { dimensions } from '../../constants/dimensions';
-import { newGameProgress } from '../../constants/new-game-progress';
+import Menu from '../models/menu';
+import Storage from '../helpers/storage';
+import Progress from '../models/progress';
+import { colours } from '../constants/colours';
+import { dimensions } from '../constants/dimensions';
+import { newGameProgress } from '../constants/new-game-progress';
 
 export default class MainMenu extends Phaser.State {
     create() {

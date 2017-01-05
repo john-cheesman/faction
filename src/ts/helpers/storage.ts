@@ -1,7 +1,7 @@
-import Equipment from './equipment';
-import Combatant from './prefabs/persons/combatant';
-import Party from './party';
-import Progress from './progress';
+import Equipment from '../models/equipment';
+import Combatant from '../models/prefabs/persons/combatant';
+import Party from '../models/party';
+import Progress from '../models/progress';
 
 function save(key: string, data: any) {
     let json;

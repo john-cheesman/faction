@@ -1,15 +1,15 @@
-import Person from '../prefabs/person';
-import Player from '../prefabs/persons/player';
-import Enemy from '../prefabs/persons/enemy';
-import Combatant from '../prefabs/persons/combatant';
-import Chest from '../prefabs/chest';
-import Fire from '../prefabs/fire';
-import Exit from '../prefabs/exit';
-import Sign from '../prefabs/sign';
-import Storage from '../storage';
-import Progress from '../progress';
-import PathFinder from '../../plugins/path-finder';
-import Utility from '../utility';
+import Person from '../models/prefabs/person';
+import Player from '../models/prefabs/persons/player';
+import Enemy from '../models/prefabs/persons/enemy';
+import Combatant from '../models/prefabs/persons/combatant';
+import Chest from '../models/prefabs/chest';
+import Fire from '../models/prefabs/fire';
+import Exit from '../models/prefabs/exit';
+import Sign from '../models/prefabs/sign';
+import Storage from '../helpers/storage';
+import Progress from '../models/progress';
+import PathFinder from '../plugins/path-finder';
+import Utility from '../helpers/utility';
 
 let prefabClasses: any;
 

@@ -1,7 +1,7 @@
-import Combatant from '../prefabs/persons/combatant';
-import Party from '../party';
-import Storage from '../storage';
-import { newGameProgress } from '../../constants/new-game-progress';
+import Combatant from '../models/prefabs/persons/combatant';
+import Party from '../models/party';
+import Storage from '../helpers/storage';
+import { newGameProgress } from '../constants/new-game-progress';
 
 export default class Battle extends Phaser.State {
     init(battleData) {

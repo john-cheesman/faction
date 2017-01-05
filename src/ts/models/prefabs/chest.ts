@@ -1,5 +1,5 @@
 import Prefab from '../prefab';
-import Utility from '../utility';
+import Utility from '../../helpers/utility';
 import Message from '../message';
 import { animations } from '../../constants/animations';
 

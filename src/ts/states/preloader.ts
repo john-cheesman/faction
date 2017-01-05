@@ -1,5 +1,5 @@
-import { dimensions } from '../../constants/dimensions';
-import { animations } from '../../constants/animations';
+import { dimensions } from '../constants/dimensions';
+import { animations } from '../constants/animations';
 
 export default class Preloader extends Phaser.State {
     public dataObject: any;
