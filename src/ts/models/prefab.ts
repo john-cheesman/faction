@@ -1,25 +1,40 @@
+import PrefabData from './prefab-data';
 export default class Prefab extends Phaser.Sprite {
-    constructor(gameState, name, x, y, properties, visible = true) {
-        super(gameState.game, x, y, properties.texture, parseInt(properties.frame, 10));
+    private _prefabData: PrefabData;
 
-        this.gameState = gameState;
-        this.name = name;
-        this.textureName = properties.texture;
-        this.alpha = visible ? 1 : 0;
+    constructor(prefabData: PrefabData) {
+        super(
+            prefabData.spriteData.game,
+            prefabData.spriteData.x,
+            prefabData.spriteData.y,
+            prefabData.spriteData.texture,
+            prefabData.spriteData.frame);
 
-        if (properties.flipX) {
+        this._prefabData = prefabData;
+        //this.textureName = prefabData.spriteData.texture;
+        this.alpha = this.visible ? 1 : 0;
+
+        if (prefabData.flipX) {
             this.anchor.setTo(0.5, 0);
             this.scale.x *= -1;
-            this.x += (gameState.map.tileHeight / 2);
+            this.x += (prefabData.gameState.map.tileHeight / 2);
         }
 
-        if (properties.flipY) {
+        if (prefabData.flipY) {
             this.anchor.setTo(0, 0.5);
             this.scale.y *= -1;
-            this.y += (gameState.map.tileHeight / 2);
+            this.y += (prefabData.gameState.map.tileHeight / 2);
         }
 
         this.gameState.game.physics.arcade.enable(this);
         this.body.immovable = true;
+    }
+
+    get gameState() {
+        return this._prefabData.gameState;
+    }
+
+    get name() {
+        return this._prefabData.name;
     }
 }
