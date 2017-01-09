@@ -7,3 +7,4 @@ dist/data
 *.apk
 *.zip
 .env
+.vscode

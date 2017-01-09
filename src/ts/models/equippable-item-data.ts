@@ -1,10 +1,9 @@
+import ItemData from './item-data';
 import EquipmentType from '../enums/equipment-type';
+
 export default class EquippableItemData {
     constructor(
-        public id: string,
-        public name: string,
-        public description: string,
-        public baseValue: number,
+        public itemData: ItemData,
         public attack: number,
         public defence: number,
         public evasion: number,
