@@ -1,4 +1,4 @@
-import EquippableItemData from '../equippableItemData';
+import EquippableItemData from '../equippable-item-data';
 import EquipmentType from '../../enums/equipment-type';
 import Item from '../item';
 import { equippableItems } from '../../constants/equippable-items';
