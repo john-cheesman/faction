@@ -1,9 +1,10 @@
+import Area from '../states/area';
 import SpriteData from './sprite-data';
 
 export default class PrefabData {
     constructor(
         public spriteData: SpriteData,
-        public gameState: Phaser.State,
+        public area: Area,
         public name: string,
         public flipX: boolean = false,
         public flipY: boolean = false,

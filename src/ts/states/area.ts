@@ -1,3 +1,4 @@
+import GamePlay from './game-play';
 import Person from '../models/prefabs/person';
 import Player from '../models/prefabs/persons/player';
 import Enemy from '../models/prefabs/persons/enemy';
@@ -24,15 +25,11 @@ prefabClasses = {
     Sign: Sign
 };
 
-export default class Area extends Phaser.State {
-    init(areaData) {
-        this.areaData = areaData;
+export default class Area extends GamePlay {
+    init(areaData: any) {
+        super.init(areaData);
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-        this.map = this.game.add.tilemap(areaData.map.key);
-
-        this.map.addTilesetImage(areaData.map.tilesetImage.name, areaData.map.tilesetImage.key);
     }
 
     create() {

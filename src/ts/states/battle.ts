@@ -1,15 +1,12 @@
+import GamePlay from './game-play';
 import Combatant from '../models/prefabs/persons/combatant';
 import Party from '../models/party';
 import Storage from '../helpers/storage';
 import { newGameProgress } from '../constants/new-game-progress';
 
-export default class Battle extends Phaser.State {
-    init(battleData) {
-        this.battleData = battleData;
-
-        this.map = this.game.add.tilemap(battleData.map.key);
-
-        this.map.addTilesetImage(battleData.map.tilesetImage.name, battleData.map.tilesetImage.key);
+export default class Battle extends GamePlay {
+    init(battleData: any) {
+        super.init(battleData);
     }
 
     create() {

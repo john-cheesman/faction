@@ -1,4 +1,5 @@
 import PrefabData from './prefab-data';
+
 export default class Prefab extends Phaser.Sprite {
     private _prefabData: PrefabData;
 
@@ -17,21 +18,21 @@ export default class Prefab extends Phaser.Sprite {
         if (prefabData.flipX) {
             this.anchor.setTo(0.5, 0);
             this.scale.x *= -1;
-            this.x += (prefabData.gameState.map.tileHeight / 2);
+            this.x += (prefabData.area.map.tileHeight / 2);
         }
 
         if (prefabData.flipY) {
             this.anchor.setTo(0, 0.5);
             this.scale.y *= -1;
-            this.y += (prefabData.gameState.map.tileHeight / 2);
+            this.y += (prefabData.area.map.tileHeight / 2);
         }
 
-        this.gameState.game.physics.arcade.enable(this);
+        this.area.game.physics.arcade.enable(this);
         this.body.immovable = true;
     }
 
-    get gameState() {
-        return this._prefabData.gameState;
+    get area() {
+        return this._prefabData.area;
     }
 
     get name() {
