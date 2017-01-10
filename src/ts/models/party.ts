@@ -7,7 +7,11 @@ function scaleCombatantXP(combatant: Combatant, xpFactor: number) {
 }
 
 export default class Party {
-    constructor(public name: string, public combatants: Combatant[], public xpFactor: number = null) {
+    constructor(
+        public name: string,
+        public combatants: Combatant[],
+        public xpFactor: number = null
+    ) {
         if (xpFactor) {
             let combatant: Combatant;
 

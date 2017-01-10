@@ -3,6 +3,6 @@ export default class ItemData {
         public id: string,
         public name: string,
         public description: string,
-        public baseValue: number)
-    { }
+        public baseValue: number
+    ) { }
 }

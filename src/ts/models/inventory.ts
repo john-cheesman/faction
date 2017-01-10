@@ -1,16 +1,23 @@
+import Item from './item';
 import EquippableItem from './items/equippable-item';
 
 export default class Inventory {
+    private _items: Item[];
+
     constructor() {
-        this.items = [];
+        this._items = [];
     }
 
-    addItem(item) {
-        this.items.push(item);
+    addItem(item: Item) {
+        this._items.push(item);
     }
 
-    get equippableItems() {
-        return this.items.filter((object) => {
+    get items(): Item[] {
+        return this._items;
+    }
+
+    get equippableItems(): Item[] {
+        return this._items.filter((object) => {
             return object instanceof EquippableItem;
         });
     }
