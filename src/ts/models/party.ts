@@ -1,27 +1,39 @@
+import IParty from '../interfaces/i-party';
 import Combatant from './prefabs/persons/combatant';
 
-function scaleCombatantXP(combatant: Combatant, xpFactor: number) {
-    combatant.xp *= xpFactor;
-
-    return combatant;
-}
-
 export default class Party {
-    constructor(
-        public name: string,
-        public combatants: Combatant[],
-        public xpFactor: number = null
-    ) {
-        if (xpFactor) {
-            let combatant: Combatant;
+    private _partyData: IParty;
 
-            this.combatants.forEach((combatant) => {
-                combatant = scaleCombatantXP(combatant, xpFactor);
+    constructor(partyData: IParty) {
+        this._partyData = partyData;
+    }
+
+    get name() {
+        return this._partyData.name;
+    }
+
+    get combatants() {
+        let combatants: Combatant[];
+
+        if (this._partyData.xpFactor) {
+            this._partyData.combatants.forEach((combatant) => {
+                combatants.push(this.scaleCombatantXP(combatant, this._partyData.xpFactor));
             }, this);
         }
+        else {
+            combatants = this._partyData.combatants;
+        }
+
+        return combatants;
     }
 
     addCombatant(combatant: Combatant) {
-        this.combatants.push(combatant);
+        this._partyData.combatants.push(combatant);
+    }
+
+    private scaleCombatantXP(combatant: Combatant, xpFactor: number) {
+        combatant.xp *= xpFactor;
+
+        return combatant;
     }
 }

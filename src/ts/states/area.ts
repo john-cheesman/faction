@@ -1,3 +1,4 @@
+import IArea from '../interfaces/i-area';
 import GamePlay from './game-play';
 import Person from '../models/prefabs/person';
 import Player from '../models/prefabs/persons/player';
@@ -26,8 +27,12 @@ prefabClasses = {
 };
 
 export default class Area extends GamePlay {
+    public areaData: IArea;
+
     init(areaData: any) {
-        super.init(areaData);
+        super.init();
+
+        this.areaData = <IArea>areaData;
 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
     }

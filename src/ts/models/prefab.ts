@@ -1,9 +1,9 @@
-import PrefabData from './prefab-data';
+import IPrefab from '../interfaces/i-prefab';
 
 export default class Prefab extends Phaser.Sprite {
-    private _prefabData: PrefabData;
+    private _prefabData: IPrefab;
 
-    constructor(prefabData: PrefabData) {
+    constructor(prefabData: IPrefab) {
         super(
             prefabData.spriteData.game,
             prefabData.spriteData.x,

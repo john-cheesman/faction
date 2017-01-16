@@ -1,4 +1,4 @@
-import EquippableItemData from '../equippable-item-data';
+import EquippableItemData from '../../interfaces/i-equippable-item';
 import EquipmentType from '../../enums/equipment-type';
 import Item from '../item';
 import { equippableItems } from '../../constants/equippable-items';
@@ -7,11 +7,7 @@ export default class EquippableItem extends Item {
     private _equippableItemData: EquippableItemData;
 
     constructor(equippableItemData: EquippableItemData) {
-        super(
-            equippableItemData.itemData.id,
-            equippableItemData.itemData.name,
-            equippableItemData.itemData.description,
-            equippableItemData.itemData.baseValue);
+        super(equippableItemData.itemData);
 
         this._equippableItemData = equippableItemData;
     }

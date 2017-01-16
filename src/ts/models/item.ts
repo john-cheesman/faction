@@ -1,9 +1,9 @@
-import ItemData from './item-data';
+import IItem from '../interfaces/i-item';
 
 export default class Item {
-    private _itemData: ItemData;
+    private _itemData: IItem;
 
-    constructor(itemData: ItemData) {
+    constructor(itemData: IItem) {
         this._itemData = itemData;
     }
 

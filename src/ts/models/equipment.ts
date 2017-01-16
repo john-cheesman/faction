@@ -1,4 +1,4 @@
-import EquipmentData from './equipment-data';
+import EquipmentData from '../interfaces/equipment-data';
 import EquippableItem from './items/equippable-item';
 import EquipmentType from '../enums/equipment-type';
 
