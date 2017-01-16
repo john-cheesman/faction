@@ -1,6 +1,6 @@
-import { dimensions } from '../constants/dimensions';
-import { colours } from '../constants/colours';
-import { spriteFrames } from '../constants/sprite-frames';
+import dimensions from '../constants/dimensions';
+import colours from '../constants/colours';
+import spriteFrames from '../constants/sprite-frames';
 
 export default class Message {
     constructor(game, text, frame, key) {

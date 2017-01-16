@@ -1,4 +1,4 @@
-export const jobStats: any = {
+const jobStats: any = {
     shadow: {
         strength: 7,
         vitality: 6,
@@ -12,3 +12,5 @@ export const jobStats: any = {
         intelligence: 4
     }
 };
+
+export default jobStats

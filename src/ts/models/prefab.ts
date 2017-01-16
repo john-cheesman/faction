@@ -1,4 +1,4 @@
-import IPrefab from '../interfaces/i-prefab';
+import IPrefab from '../interfaces/prefab.interface';
 
 export default class Prefab extends Phaser.Sprite {
     private _prefabData: IPrefab;

@@ -1,6 +1,6 @@
 import MenuItem from './menu-item';
-import { colours } from '../constants/colours';
-import { dimensions } from '../constants/dimensions';
+import colours from '../constants/colours';
+import dimensions from '../constants/dimensions';
 
 export default class Menu {
     constructor(game, x, y, options) {

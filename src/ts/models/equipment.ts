@@ -1,15 +1,9 @@
-import EquipmentData from '../interfaces/equipment-data';
-import EquippableItem from './items/equippable-item';
+import IEquipment from '../interfaces/equipment.interface';
+import EquippableItem from './items/equippable-item.item';
 import EquipmentType from '../enums/equipment-type';
 
 export default class Equipment {
-    private _equipment: EquipmentData;
-
-    constructor(equipmentData: EquipmentData) {
-        if (equipmentData) {
-            this._equipment = equipmentData;
-        }
-    }
+    constructor(private _equipment?: IEquipment) { }
 
     get head(): EquippableItem {
         return this._equipment.head;

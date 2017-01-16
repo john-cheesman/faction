@@ -1,5 +1,5 @@
-import IParty from '../interfaces/i-party';
-import Combatant from './prefabs/persons/combatant';
+import IParty from '../interfaces/party.interface';
+import Combatant from './prefabs/persons/combatant.person';
 
 export default class Party {
     private _partyData: IParty;

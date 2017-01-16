@@ -1,5 +1,5 @@
 import Item from './item';
-import EquippableItem from './items/equippable-item';
+import EquippableItem from './items/equippable-item.item';
 
 export default class Inventory {
     private _items: Item[];

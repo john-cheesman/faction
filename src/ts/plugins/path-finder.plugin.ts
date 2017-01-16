@@ -1,9 +1,9 @@
 /// <reference path="../../../node_modules/easystarjs/index.d.ts" />
 
-import Utility from '../models/utility';
+import Utility from '../helpers/utility.helper';
 import * as EasyStar from 'easystarjs';
 
-export default class PathFinder extends Phaser.Plugin {
+export default class PathFinderPlugin extends Phaser.Plugin {
     constructor(game: Phaser.Game, parent: Phaser.PluginManager) {
         super(game, parent);
 

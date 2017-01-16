@@ -1,6 +1,6 @@
-import { dimensions } from '../constants/dimensions';
+import dimensions from '../constants/dimensions';
 
-export default class Utility {
+export default class UtilityHelper {
     static filterArray(array, key, value) {
         return array.filter((object) => {
             return object[key] === value;

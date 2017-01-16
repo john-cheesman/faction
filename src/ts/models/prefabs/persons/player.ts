@@ -1,5 +1,5 @@
 import Person from '../person';
-import { spriteFrames } from '../../../constants/sprite-frames';
+import spriteFrames from '../../../constants/sprite-frames';
 
 export default class Player extends Person {
     constructor(gameState, name, x, y, properties, visible) {

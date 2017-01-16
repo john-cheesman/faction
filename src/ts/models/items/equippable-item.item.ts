@@ -1,7 +1,7 @@
-import EquippableItemData from '../../interfaces/i-equippable-item';
+import EquippableItemData from '../../interfaces/equippable-item.interface';
 import EquipmentType from '../../enums/equipment-type';
 import Item from '../item';
-import { equippableItems } from '../../constants/equippable-items';
+import equippableItems from '../../constants/equippable-items';
 
 export default class EquippableItem extends Item {
     private _equippableItemData: EquippableItemData;

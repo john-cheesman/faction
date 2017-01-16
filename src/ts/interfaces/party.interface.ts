@@ -1,4 +1,4 @@
-import Combatant from '../models/prefabs/persons/combatant';
+import Combatant from '../models/prefabs/persons/combatant.person';
 
 interface IParty {
     name: string,

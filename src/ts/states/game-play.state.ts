@@ -12,5 +12,4 @@ export default class GamePlay extends Phaser.State {
 
         this.map.addTilesetImage(gamePlayData.map.tilesetImage.name, gamePlayData.map.tilesetImage.key);
     }
-
 }

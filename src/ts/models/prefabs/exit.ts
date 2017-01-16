@@ -1,6 +1,6 @@
 import Prefab from '../prefab';
-import Storage from '../../helpers/storage';
-import Utility from '../../helpers/utility'
+import Storage from '../../helpers/storage.helper';
+import Utility from '../../helpers/utility.helper'
 
 export default class Exit extends Prefab {
     constructor(gameState, name, x, y, properties, visible) {

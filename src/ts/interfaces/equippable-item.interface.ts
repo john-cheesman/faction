@@ -1,4 +1,4 @@
-import IItem from './i-item';
+import IItem from './item.interface';
 import EquipmentType from '../enums/equipment-type';
 
 interface IEquippableItem {

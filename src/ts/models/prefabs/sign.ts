@@ -1,6 +1,6 @@
 import Prefab from '../prefab';
 import Message from '../message';
-import Utility from '../../helpers/utility';
+import Utility from '../../helpers/utility.helper';
 
 export default class Sign extends Prefab {
     constructor(gameState, name, x, y, properties, visible) {

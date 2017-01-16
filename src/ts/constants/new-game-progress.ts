@@ -1,4 +1,4 @@
-export const newGameProgress: any = {
+const newGameProgress: any = {
     area: 'area-1a',
     party: {
         name: 'player',
@@ -23,3 +23,5 @@ export const newGameProgress: any = {
         xpFactor: null
     }
 };
+
+export default newGameProgress

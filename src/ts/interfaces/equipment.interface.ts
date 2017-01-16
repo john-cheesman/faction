@@ -1,4 +1,4 @@
-import EquippableItem from '../models/items/equippable-item';
+import EquippableItem from '../models/items/equippable-item.item';
 
 interface IEquipment {
     head: EquippableItem,

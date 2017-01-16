@@ -1,5 +1,5 @@
-import Area from '../states/area';
-import ISprite from './i-sprite';
+import Area from '../states/area.state';
+import ISprite from './sprite.interface';
 
 interface IPrefab {
     spriteData: ISprite,

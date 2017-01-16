@@ -1,7 +1,7 @@
 import Prefab from '../prefab';
-import Utility from '../../helpers/utility';
+import Utility from '../../helpers/utility.helper';
 import Message from '../message';
-import { animations } from '../../constants/animations';
+import animations from '../../constants/animations';
 
 export default class Chest extends Prefab {
     constructor(gameState, name, x, y, properties, visible) {

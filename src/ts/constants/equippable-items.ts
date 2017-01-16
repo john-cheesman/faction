@@ -1,4 +1,4 @@
-export const equippableItems: any = {
+const equippableItems: any = {
     dagger: {
         id: 'dagger',
         name: 'Dagger',
@@ -24,3 +24,5 @@ export const equippableItems: any = {
         speed: -10
     }
 };
+
+export default equippableItems

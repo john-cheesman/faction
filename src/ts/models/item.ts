@@ -1,4 +1,4 @@
-import IItem from '../interfaces/i-item';
+import IItem from '../interfaces/item.interface';
 
 export default class Item {
     private _itemData: IItem;

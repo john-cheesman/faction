@@ -1,8 +1,8 @@
 import Prefab from '../prefab';
 import Inventory from '../inventory';
-import EquippableItem from '../items/equippable-item';
-import { spriteFrames } from '../../constants/sprite-frames';
-import { animations } from '../../constants/animations';
+import EquippableItem from '../items/equippable-item.item';
+import spriteFrame from '../../constants/sprite-frames';
+import animations from '../../constants/animations';
 
 const quarterPi = Math.PI / 4;
 

@@ -1,9 +1,9 @@
 import Person from '../person';
 import Job from '../../job';
 import Experience from '../../experience';
-import EquippableItem from '../../items/equippable-item';
+import EquippableItem from '../../items/equippable-item.item';
 import Equipment from '../../equipment';
-import { equippableItems } from '../../../constants/equippable-items';
+import equippableItems from '../../../constants/equippable-items';
 
 export default class Combatant extends Person {
     constructor(gameState, name, x, y, properties, visible) {
