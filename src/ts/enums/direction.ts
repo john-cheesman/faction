@@ -1,5 +1,5 @@
 type Direction =
-    'Úp' |
+    'Up' |
     'Down' |
     'Left' |
     'Right';

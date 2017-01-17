@@ -1,3 +1,5 @@
+import Player from './persons/player';
+import Direction from '../../enums/direction';
 import IPerson from '../../interfaces/person.interface';
 import Prefab from '../prefab';
 import Inventory from '../inventory';
@@ -6,30 +8,6 @@ import spriteFrames from '../../constants/sprite-frames';
 import animations from '../../constants/animations';
 
 const quarterPi = Math.PI / 4;
-
-function getDirection(angle) {
-    let direction;
-
-    switch (true) {
-        case (angle >= (quarterPi * -3) && angle < (-quarterPi)):
-            direction = 'up';
-            break;
-
-        case (angle >= (-quarterPi) && angle < quarterPi):
-            direction = 'right';
-            break;
-
-        case (angle >= quarterPi && angle < (quarterPi * 3)):
-            direction = 'down';
-            break;
-
-        default:
-            direction = 'left';
-            break;
-    }
-
-    return direction;
-}
 
 export default class Person extends Prefab {
     constructor(private _personData: IPerson) {
@@ -46,10 +24,10 @@ export default class Person extends Prefab {
 
         this.pathStep = -1;
 
-        this.animations.add('up', animations.person.walk.up, 10, true);
-        this.animations.add('right', animations.person.walk.right, 10, true);
-        this.animations.add('down', animations.person.walk.down, 10, true);
-        this.animations.add('left', animations.person.walk.left, 10, true);
+        this.animations.add('Up', animations.person.walk.up, 10, true);
+        this.animations.add('Right', animations.person.walk.right, 10, true);
+        this.animations.add('Down', animations.person.walk.down, 10, true);
+        this.animations.add('Left', animations.person.walk.left, 10, true);
 
         // if (properties.inventory) {
         //     let item;
@@ -68,11 +46,15 @@ export default class Person extends Prefab {
     public path: number[];
     public pathStep: number;
 
-    get direction() {
+    get direction(): Direction {
         return this._personData.direction || 'Down';
     }
 
-    enableInteraction(player, person) {
+    set direction(value: Direction) {
+        this._personData.direction = value;
+    }
+
+    enableInteraction(player: Player, person: Person) {
         player.interactionTarget = person;
     }
 
@@ -92,7 +74,7 @@ export default class Person extends Prefab {
                 velocity.normalize();
                 this.body.velocity.x = velocity.x * this.movementSpeed;
                 this.body.velocity.y = velocity.y * this.movementSpeed;
-                this.direction = getDirection(this.body.angle);
+                this.direction = this.getDirection(this.body.angle);
                 this.animations.play(this.direction);
             }
             else {
@@ -153,5 +135,29 @@ export default class Person extends Prefab {
             this.reticule.position = position;
             this.reticule.visible = true;
         }
+    }
+
+    private getDirection(angle: number): Direction {
+        let direction: Direction;
+
+        switch (true) {
+            case (angle >= (quarterPi * -3) && angle < (-quarterPi)):
+                direction = 'Up';
+                break;
+
+            case (angle >= (-quarterPi) && angle < quarterPi):
+                direction = 'Right';
+                break;
+
+            case (angle >= quarterPi && angle < (quarterPi * 3)):
+                direction = 'Down';
+                break;
+
+            default:
+                direction = 'Left';
+                break;
+        }
+
+        return direction;
     }
 }

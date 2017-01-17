@@ -1,9 +1,11 @@
 import Person from '../person';
 
 export default class Merchant extends Person {
-    constructor(name, x, y, properties, visible) {
-        super(name, x, y, properties, visible);
+    constructor(private _merchantData: IMerchant) {
+        super(_merchantData.personData);
+    }
 
-        this.rateFactor = properties.rateFactor;
+    get rateFactor(): number {
+        return _merchantData.rateFactor;
     }
 }
