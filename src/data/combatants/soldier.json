@@ -1,0 +1,9 @@
+{
+    "name": "soldier",
+    "stats": {
+        "strength": 9,
+        "vitality": 8,
+        "agility": 5,
+        "intelligence": 4
+    }
+}

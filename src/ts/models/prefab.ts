@@ -1,9 +1,7 @@
 import IPrefab from '../interfaces/prefab.interface';
 
 export default class Prefab extends Phaser.Sprite {
-    private _prefabData: IPrefab;
-
-    constructor(prefabData: IPrefab) {
+    constructor(private _prefabData: IPrefab) {
         super(
             prefabData.spriteData.game,
             prefabData.spriteData.x,
@@ -18,21 +16,21 @@ export default class Prefab extends Phaser.Sprite {
         if (prefabData.flipX) {
             this.anchor.setTo(0.5, 0);
             this.scale.x *= -1;
-            this.x += (prefabData.area.map.tileHeight / 2);
+            this.x += (prefabData.gamePlay.map.tileHeight / 2);
         }
 
         if (prefabData.flipY) {
             this.anchor.setTo(0, 0.5);
             this.scale.y *= -1;
-            this.y += (prefabData.area.map.tileHeight / 2);
+            this.y += (prefabData.gamePlay.map.tileHeight / 2);
         }
 
-        this.area.game.physics.arcade.enable(this);
+        this.gamePlay.game.physics.arcade.enable(this);
         this.body.immovable = true;
     }
 
-    get area() {
-        return this._prefabData.area;
+    get gamePlay() {
+        return this._prefabData.gamePlay;
     }
 
     get name() {

@@ -1,9 +1,9 @@
-import Area from '../states/area.state';
+import GamePlay from '../states/game-play.state';
 import ISprite from './sprite.interface';
 
 interface IPrefab {
     spriteData: ISprite,
-    area: Area,
+    gamePlay: GamePlay,
     name: string,
     flipX: boolean,
     flipY: boolean,

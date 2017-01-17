@@ -1,7 +1,8 @@
+import IPerson from '../../interfaces/person.interface';
 import Prefab from '../prefab';
 import Inventory from '../inventory';
 import EquippableItem from '../items/equippable-item.item';
-import spriteFrame from '../../constants/sprite-frames';
+import spriteFrames from '../../constants/sprite-frames';
 import animations from '../../constants/animations';
 
 const quarterPi = Math.PI / 4;
@@ -31,12 +32,10 @@ function getDirection(angle) {
 }
 
 export default class Person extends Prefab {
-    constructor(gameState: Phaser.State, name, x, y, properties, visible) {
-        super(gameState, name, x, y, properties, visible);
+    constructor(private _personData: IPerson) {
+        super(_personData.prefabData);
 
-        this.direction = properties.direction || 'down';
-
-        this.frame = spriteFrames.person[this.direction];
+        this.frame = spriteFrames.person[_personData.direction];
 
         this.body.setSize(24, 36, 4, 0);
         this.anchor.setTo(0.5, 0.75);
@@ -52,17 +51,25 @@ export default class Person extends Prefab {
         this.animations.add('down', animations.person.walk.down, 10, true);
         this.animations.add('left', animations.person.walk.left, 10, true);
 
-        if (properties.inventory) {
-            let item;
+        // if (properties.inventory) {
+        //     let item;
 
-            this.inventory = new Inventory();
+        //     this.inventory = new Inventory();
 
-            if (properties.inventory.equippableItems) {
-                properties.inventory.equippableItems.forEach((item) => {
-                    this.inventory.addItem(EquippableItem.instantiateFromString(item));
-                });
-            }
-        }
+        //     if (properties.inventory.equippableItems) {
+        //         properties.inventory.equippableItems.forEach((item) => {
+        //             this.inventory.addItem(EquippableItem.instantiateFromString(item));
+        //         });
+        //     }
+        // }
+    }
+
+    public movementSpeed: number;
+    public path: number[];
+    public pathStep: number;
+
+    get direction() {
+        return this._personData.direction || 'Down';
     }
 
     enableInteraction(player, person) {
