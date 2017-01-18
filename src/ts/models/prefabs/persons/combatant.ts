@@ -1,3 +1,5 @@
+import ICombatant from '../../../interfaces/combatant.interface';
+import IPerson from '../../../interfaces/person.interface';
 import Person from '../person';
 import Job from '../../job';
 import Experience from '../../experience';
@@ -6,21 +8,14 @@ import Equipment from '../../equipment';
 import equippableItems from '../../../constants/equippable-items';
 
 export default class Combatant extends Person {
-    constructor(gameState, name, x, y, properties, visible) {
-        super(gameState, name, x, y, properties, visible);
+    private _equipment: Equipment;
+    private _job: Job;
 
-        this.xp = properties.xp;
-        this.job = new Job(properties.job);
-        this.equipment = new Equipment();
-        this.equipmentList = properties.equipment;
+    constructor(private _combatantData: ICombatant) {
+        super(_combatantData.personData);
 
-        if (properties.equipment) {
-            this.equipment.equipItem(EquippableItem.instantiateFromString(properties.equipment.head));
-            this.equipment.equipItem(EquippableItem.instantiateFromString(properties.equipment.body));
-            this.equipment.equipItem(EquippableItem.instantiateFromString(properties.equipment.primaryHand));
-            this.equipment.equipItem(EquippableItem.instantiateFromString(properties.equipment.secondaryHand));
-            this.equipment.equipItem(EquippableItem.instantiateFromString(properties.equipment.feet));
-        }
+        this._job = new Job(_combatantData.job);
+        this._equipment = new Equipment(_combatantData.equipment);
 
         console.log(`${this.name} xp: ${this.xp} job: ${this.job.name} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed} equipment:`, this.equipment);
 
@@ -31,53 +26,63 @@ export default class Combatant extends Person {
         console.log(this.equipment.unequipItem('secondaryHand'));
     }
 
-    public xp: number;
+    get xp(): number {
+        return this._combatantData.xp;
+    }
 
-    get level() {
+    get level(): number {
         return Experience.getLevelForXP(this.xp);
     }
 
-    get xpForNextLevel() {
+    get xpForNextLevel(): number {
         return Experience.getXPForLevel(this.level + 1);
     }
 
-    get strength() {
+    get strength(): number {
         return this.level * ((this.job.strength * 25.5) / 99);
     }
 
-    get vitality() {
+    get vitality(): number {
         return this.level * ((this.job.vitality * 25.5) / 99);
     }
 
-    get agility() {
+    get agility(): number {
         return this.level * ((this.job.agility * 25.5) / 99);
     }
 
-    get intelligence() {
+    get intelligence(): number {
         return this.level * ((this.job.intelligence * 25.5) / 99);
     }
 
-    get hp() {
+    get hp(): number {
         return this.vitality * 4;
     }
 
-    get attack() {
+    get attack(): number {
         return this.strength + this.equipment.combinedStats.attack;
     }
 
-    get defence() {
+    get defence(): number {
         return ((this.vitality + this.strength) / 2) + this.equipment.combinedStats.defence;
     }
 
-    get evasion() {
+    get evasion(): number {
         return ((this.agility + this.intelligence) / 4) + this.equipment.combinedStats.evasion;
     }
 
-    get accuracy() {
+    get accuracy(): number {
         return ((this.intelligence + this.vitality) / 2) + this.equipment.combinedStats.accuracy;
     }
 
-    get speed() {
+    get speed(): number {
         return ((this.agility + this.vitality) / 2) + this.equipment.combinedStats.speed;
+    }
+
+    get equipment(): Equipment {
+        return this._equipment;
+    }
+
+    get job(): Job {
+        return this._job;
     }
 }

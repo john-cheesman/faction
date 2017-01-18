@@ -49,61 +49,61 @@ export default class Equipment {
         this._equipment.feet = value;
     }
 
-    // equipItem(item: EquippableItem) {
-    //     let previousItem;
+    equipItem(item: EquippableItem) {
+        let previousItem;
 
-    //     if (item) {
-    //         switch (item.equipmentType) {
-    //             case 'Head':
-    //                 previousItem = this.head;
-    //                 this.head = item;
-    //                 break;
+        if (item) {
+            switch (item.equipmentType) {
+                case 'Head':
+                    previousItem = this.head;
+                    this.head = item;
+                    break;
 
-    //             case 'Body':
-    //                 previousItem = this.head;
-    //                 this.body = item;
-    //                 break;
+                case 'Body':
+                    previousItem = this.head;
+                    this.body = item;
+                    break;
 
-    //             case 'Feet':
-    //                 previousItem = this.feet;
-    //                 this.feet = item;
-    //                 break;
+                case 'Feet':
+                    previousItem = this.feet;
+                    this.feet = item;
+                    break;
 
-    //             case 'OneHanded':
-    //                 if (!this.primaryHand) {
-    //                     this.primaryHand = item;
-    //                 }
-    //                 else if (this.primaryHand.equipmentType === 'TwoHanded') {
-    //                     return;
-    //                 }
-    //                 else {
-    //                     previousItem = this.secondaryHand;
-    //                     this.secondaryHand = item;
-    //                 }
-    //                 break;
+                case 'OneHanded':
+                    if (!this.primaryHand) {
+                        this.primaryHand = item;
+                    }
+                    else if (this.primaryHand.equipmentType === 'TwoHanded') {
+                        return;
+                    }
+                    else {
+                        previousItem = this.secondaryHand;
+                        this.secondaryHand = item;
+                    }
+                    break;
 
-    //             case 'TwoHanded':
-    //                 if (this.primaryHand && this.primaryHand.equipmentType === 'TwoHanded') {
-    //                     return;
-    //                 }
+                case 'TwoHanded':
+                    if (this.primaryHand && this.primaryHand.equipmentType === 'TwoHanded') {
+                        return;
+                    }
 
-    //                 previousItem = this.secondaryHand;
-    //                 this.secondaryHand = item;
-    //                 break;
-    //         }
-    //     }
+                    previousItem = this.secondaryHand;
+                    this.secondaryHand = item;
+                    break;
+            }
+        }
 
-    //     return previousItem;
-    // }
+        return previousItem;
+    }
 
-    // unequipItem(itemType) {
-    //     let previousItem;
+    unequipItem(itemType: EquipmentType) {
+        let previousItem;
 
-    //     previousItem = this[itemType];
-    //     this[itemType] = null;
+        previousItem = this[itemType];
+        this[itemType] = null;
 
-    //     return previousItem;
-    // }
+        return previousItem;
+    }
 
     get combinedStats() {
         let stats,
