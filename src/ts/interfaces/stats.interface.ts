@@ -1,6 +1,6 @@
 interface IStats {
     strength: number,
-    viatality: number,
+    vitality: number,
     agility: number,
     intelligence: number
 }

@@ -1,6 +1,8 @@
 import IEquipment from '../interfaces/equipment.interface';
 import EquippableItem from './items/equippable-item.item';
 import EquipmentType from '../enums/equipment-type';
+import DerivedStats from './derived-stats';
+import IDerivedStats from '../interfaces/derived-stats.interface';
 
 export default class Equipment {
     constructor(private _equipment?: IEquipment) { }
@@ -49,7 +51,7 @@ export default class Equipment {
         this._equipment.feet = value;
     }
 
-    equipItem(item: EquippableItem) {
+    equipItem(item: EquippableItem): EquippableItem {
         let previousItem;
 
         if (item) {
@@ -96,20 +98,20 @@ export default class Equipment {
         return previousItem;
     }
 
-    unequipItem(itemType: EquipmentType) {
-        let previousItem;
+    unequipItem(itemType: string): EquippableItem {
+        let previousItem: EquippableItem;
 
-        previousItem = this[itemType];
-        this[itemType] = null;
+        previousItem = this._equipment[itemType];
+        this._equipment[itemType] = null;
 
         return previousItem;
     }
 
-    get combinedStats() {
-        let stats,
-            item;
+    get combinedStats(): DerivedStats {
+        let statsData: IDerivedStats,
+            item: string;
 
-        stats = {
+        statsData = {
             attack: 0,
             defence: 0,
             evasion: 0,
@@ -117,18 +119,18 @@ export default class Equipment {
             speed: 0
         };
 
-        for (item in this) {
+        for (item in this._equipment) {
             if (this.hasOwnProperty(item)) {
                 if (this[item]) {
-                    stats.attack += this[item].attack;
-                    stats.defence += this[item].defence;
-                    stats.evasion += this[item].evasion;
-                    stats.accuracy += this[item].accuracy;
-                    stats.speed += this[item].speed;
+                    statsData.attack += this[item].attack;
+                    statsData.defence += this[item].defence;
+                    statsData.evasion += this[item].evasion;
+                    statsData.accuracy += this[item].accuracy;
+                    statsData.speed += this[item].speed;
                 }
             }
         }
 
-        return stats;
+        return new DerivedStats(statsData);
     }
 }
