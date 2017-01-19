@@ -1,12 +1,12 @@
-import EquippableItem from '../models/items/equippable-item.item';
+import IEquippableItem from './equippable-item.interface';
 
 interface IEquipment {
-    [index: string]: EquippableItem,
-    head: EquippableItem,
-    body: EquippableItem,
-    primaryHand: EquippableItem,
-    secondaryHand: EquippableItem,
-    feet: EquippableItem
+    [index: string]: IEquippableItem,
+    head: IEquippableItem,
+    body: IEquippableItem,
+    primaryHand: IEquippableItem,
+    secondaryHand: IEquippableItem,
+    feet: IEquippableItem
 }
 
 export default IEquipment

@@ -1,58 +1,65 @@
 import IEquipment from '../interfaces/equipment.interface';
+import IEquippableItem from '../interfaces/equippable-item.interface';
 import EquippableItem from './items/equippable-item.item';
 import EquipmentType from '../enums/equipment-type';
 import DerivedStats from './derived-stats';
 import IDerivedStats from '../interfaces/derived-stats.interface';
 
 export default class Equipment {
-    constructor(private _equipment?: IEquipment) { }
+    private _head: EquippableItem;
+    private _body: EquippableItem;
+    private _primaryHand: EquippableItem;
+    private _secondaryHand: EquippableItem;
+    private _feet: EquippableItem;
 
-    get head(): EquippableItem {
-        return this._equipment.head;
+    constructor(_equipment?: IEquipment) { }
+
+    get head() {
+        return this._head;
     }
 
     set head(value) {
-        this._equipment.head = value;
+        this._head = value;
     }
 
-    get body(): EquippableItem {
-        return this._equipment.body;
+    get body() {
+        return this._body;
     }
 
     set body(value) {
-        this._equipment.body = value;
+        this._body = value;
     }
 
-    get primaryHand(): EquippableItem {
-        return this._equipment.primaryHand;
+    get primaryHand() {
+        return this._primaryHand;
     }
 
     set primaryHand(value) {
         if (value.equipmentType === 'OneHanded' || (value.equipmentType === 'TwoHanded' && this.secondaryHand === null)) {
-            this._equipment.primaryHand = value;
+            this._primaryHand = value;
         }
     }
 
-    get secondaryHand(): EquippableItem {
-        return this._equipment.secondaryHand;
+    get secondaryHand() {
+        return this._secondaryHand;
     }
 
     set secondaryHand(value) {
         if (value.equipmentType === 'OneHanded' && this.primaryHand !== null && this.primaryHand.equipmentType !== 'TwoHanded') {
-            this._equipment.secondaryHand = value;
+            this._secondaryHand = value;
         }
     }
 
-    get feet(): EquippableItem {
-        return this._equipment.feet;
+    get feet() {
+        return this._feet;
     }
 
     set feet(value) {
-        this._equipment.feet = value;
+        this._feet = value;
     }
 
     equipItem(item: EquippableItem): EquippableItem {
-        let previousItem;
+        let previousItem: EquippableItem;
 
         if (item) {
             switch (item.equipmentType) {
@@ -98,39 +105,38 @@ export default class Equipment {
         return previousItem;
     }
 
-    unequipItem(itemType: string): EquippableItem {
-        let previousItem: EquippableItem;
+    // unequipItem(itemType: string): EquippableItem {
+    //     let previousItem: EquippableItem;
 
-        previousItem = this._equipment[itemType];
-        this._equipment[itemType] = null;
+    //     previousItem = this._equipment[itemType];
+    //     this._equipment[itemType] = null;
 
-        return previousItem;
-    }
+    //     return previousItem;
+    // }
 
-    get combinedStats(): DerivedStats {
-        let statsData: IDerivedStats,
-            item: string;
+    // get combinedStats(): DerivedStats {
+    //     let statsData: IDerivedStats;
 
-        statsData = {
-            attack: 0,
-            defence: 0,
-            evasion: 0,
-            accuracy: 0,
-            speed: 0
-        };
+    //     statsData = {
+    //         attack: 0,
+    //         defence: 0,
+    //         evasion: 0,
+    //         accuracy: 0,
+    //         speed: 0
+    //     };
 
-        for (item in this._equipment) {
-            if (this.hasOwnProperty(item)) {
-                if (this[item]) {
-                    statsData.attack += this[item].attack;
-                    statsData.defence += this[item].defence;
-                    statsData.evasion += this[item].evasion;
-                    statsData.accuracy += this[item].accuracy;
-                    statsData.speed += this[item].speed;
-                }
-            }
-        }
+    //     for (let item in this) {
+    //         if (this.hasOwnProperty(item)) {
+    //             if (this[item]) {
+    //                 statsData.attack += this[item].attack;
+    //                 statsData.defence += this[item].defence;
+    //                 statsData.evasion += this[item].evasion;
+    //                 statsData.accuracy += this[item].accuracy;
+    //                 statsData.speed += this[item].speed;
+    //             }
+    //         }
+    //     }
 
-        return new DerivedStats(statsData);
-    }
+    //     return new DerivedStats(statsData);
+    // }
 }
