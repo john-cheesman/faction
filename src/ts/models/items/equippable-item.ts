@@ -1,3 +1,4 @@
+import DerivedStats from '../derived-stats';
 import EquippableItemData from '../../interfaces/equippable-item.interface';
 import EquipmentType from '../../enums/equipment-type';
 import Item from '../item';
@@ -18,18 +19,22 @@ export default class EquippableItem extends Item {
         return this._equippableItemData.equipmentType;
     }
 
-    static instantiateFromString(type: string) {
-        let itemData;
-
-        itemData = equippableItems[type];
-
-        if (itemData) {
-            return new EquippableItem(itemData);
-        }
-        else if (type) {
-            console.error(`Unknown equippable item: ${type}`);
-        }
-
-        return null;
+    get derivedStats(): DerivedStats {
+        return new DerivedStats(this._equippableItemData.derivedStats);
     }
+
+    // static instantiateFromString(type: string) {
+    //     let itemData;
+
+    //     itemData = equippableItems[type];
+
+    //     if (itemData) {
+    //         return new EquippableItem(itemData);
+    //     }
+    //     else if (type) {
+    //         console.error(`Unknown equippable item: ${type}`);
+    //     }
+
+    //     return null;
+    // }
 }
