@@ -1,5 +1,5 @@
-import IArea from '../interfaces/i-area';
-import GamePlay from './game-play';
+import IArea from '../interfaces/area.interface';
+import GamePlay from './game-play.state';
 import Person from '../models/prefabs/person';
 import Player from '../models/prefabs/persons/player';
 import Enemy from '../models/prefabs/persons/enemy';
@@ -8,10 +8,10 @@ import Chest from '../models/prefabs/chest';
 import Fire from '../models/prefabs/fire';
 import Exit from '../models/prefabs/exit';
 import Sign from '../models/prefabs/sign';
-import Storage from '../helpers/storage';
+import Storage from '../helpers/storage.helper';
 import Progress from '../models/progress';
-import PathFinder from '../plugins/path-finder';
-import Utility from '../helpers/utility';
+import PathFinder from '../plugins/path-finder.plugin';
+import Utility from '../helpers/utility.helper';
 
 let prefabClasses: any;
 
@@ -30,7 +30,7 @@ export default class Area extends GamePlay {
     public areaData: IArea;
 
     init(areaData: any) {
-        super.init();
+        super.init(areaData.gamePlayData);
 
         this.areaData = <IArea>areaData;
 

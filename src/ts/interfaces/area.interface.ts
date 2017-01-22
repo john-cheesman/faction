@@ -1,7 +1,12 @@
+import IGamePlay from './game-play.interface';
+import IPerson from './person.interface';
+import IParty from './party.interface';
+
 interface IArea {
-    name: string,
+    gamePlayData: IGamePlay,
     groups: string[],
-    party: any[]
+    player: IPerson,
+    party: IParty
 }
 
 export default IArea

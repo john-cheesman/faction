@@ -1,12 +1,17 @@
-import GamePlay from './game-play';
+import IBattle from '../interfaces/battle.interface';
+import GamePlay from './game-play.state';
 import Combatant from '../models/prefabs/persons/combatant';
 import Party from '../models/party';
-import Storage from '../helpers/storage';
-import { newGameProgress } from '../constants/new-game-progress';
+import Storage from '../helpers/storage.helper';
+import newGameProgress from '../constants/new-game-progress';
 
 export default class Battle extends GamePlay {
+    public battleData: IBattle;
+
     init(battleData: any) {
-        super.init(battleData);
+        super.init(battleData.gamePlayData);
+
+        this.battleData = <IBattle>battleData;
     }
 
     create() {
