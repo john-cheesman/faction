@@ -1,10 +1,11 @@
+import IStats from './stats.interface';
 import IPerson from './person.interface';
 import IEquipment from './equipment.interface';
 
 interface ICombatant {
     personData: IPerson,
     xp: number,
-    job: string,
+    baseStats: IStats,
     equipment: IEquipment
 }
 

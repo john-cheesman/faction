@@ -1,3 +1,5 @@
+import ITileDimensions from '../interfaces/tile-dimensions.interface';
+import ICoordinate from '../interfaces/coordinate.interface';
 import dimensions from '../constants/dimensions';
 
 export default class UtilityHelper {
@@ -7,7 +9,7 @@ export default class UtilityHelper {
         });
     }
 
-    static setPositionByTile(object, position) {
+    static setPositionByTile(object: Phaser.Sprite, position: number[]) {
         object.x = (position[0] * dimensions.tileSize);
         object.y = (position[1] * dimensions.tileSize);
     }
@@ -23,14 +25,14 @@ export default class UtilityHelper {
         };
     }
 
-    static offsetCameraPosition(camera: Phaser.Camera, targetPosition: Phaser.Point) {
+    static offsetCameraPosition(camera: Phaser.Camera, targetPosition: Phaser.Point): Phaser.Point {
         targetPosition.x += camera.position.x - (camera.width / 2);
         targetPosition.y += camera.position.y - (camera.height / 2);
 
         return targetPosition;
     }
 
-    static getCoordFromPoint(point: Phaser.Point, tileDimensions: { x: number, y: number }) {
+    static getCoordFromPoint(point: Phaser.Point, tileDimensions: ITileDimensions): ICoordinate {
         let row,
             column;
 
@@ -40,7 +42,7 @@ export default class UtilityHelper {
         return { row: row, column: column };
     }
 
-    static getPointFromCoord(coord: { column: number, row: number }, tileDimensions: { x: number, y: number }) {
+    static getPointFromCoord(coord: ICoordinate, tileDimensions: ITileDimensions): Phaser.Point {
         let x,
             y;
 
@@ -50,7 +52,7 @@ export default class UtilityHelper {
         return new Phaser.Point(x, y);
     }
 
-    static isAdjacent(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: { x: number, y: number }): boolean {
+    static isAdjacent(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: ITileDimensions): boolean {
         let deltas;
 
         deltas = this.compareCoords(primaryPosition, secondaryPosition, tileDimensions);
@@ -58,7 +60,7 @@ export default class UtilityHelper {
         return (deltas.rowDelta === 0 && deltas.columnDelta === 1) || (deltas.columnDelta === 0 && deltas.rowDelta === 1);
     }
 
-    static isOnTop(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: { x: number, y: number }): boolean {
+    static isOnTop(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: ITileDimensions): boolean {
         let deltas;
 
         deltas = this.compareCoords(primaryPosition, secondaryPosition, tileDimensions);
@@ -66,7 +68,7 @@ export default class UtilityHelper {
         return deltas.rowDelta === 0 && deltas.columnDelta === 0;
     }
 
-    static compareCoords(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: { x: number, y: number }) {
+    static compareCoords(primaryPosition: Phaser.Point, secondaryPosition: Phaser.Point, tileDimensions: ITileDimensions): { columnDelta: number, rowDelta: number } {
         let primaryCoord,
             secondaryCoord,
             columnDelta,

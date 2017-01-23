@@ -13,7 +13,7 @@ export default class Sign extends Prefab {
     }
 
     get message() {
-        return this._signData.message.split('|');
+        return this._signData.message;
     }
 
     interact() {

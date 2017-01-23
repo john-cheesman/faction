@@ -1,13 +1,16 @@
+import IEnemy from '../../../interfaces/enemy.interface';
 import Person from '../person';
 
 export default class Enemy extends Person {
-    constructor(gameState, name, x, y, properties, visible) {
-        super(gameState, name, x, y, properties, visible);
+    constructor(enemyData: IEnemy) {
+        super(enemyData.personData);
 
-        this.battle = properties.battle;
+        this.battle = enemyData.battle;
     }
 
+    public battle: string;
+
     interact() {
-        this.gameState.game.state.start('Boot', true, false, `data/battle/${this.battle}-data.json`, 'Battle');
+        this.gamePlay.game.state.start('Boot', true, false, `data/battle/${this.battle}-data.json`, 'Battle');
     }
 }

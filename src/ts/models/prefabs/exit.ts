@@ -1,32 +1,39 @@
+import IExit from '../../interfaces/exit.interface';
+import ICoordinate from '../../interfaces/coordinate.interface';
 import Prefab from '../prefab';
 import Storage from '../../helpers/storage.helper';
 import Utility from '../../helpers/utility.helper'
 
 export default class Exit extends Prefab {
-    constructor(gameState, name, x, y, properties, visible) {
-        super(gameState, name, x, y, properties, visible);
+    constructor(private _exitData: IExit) {
+        super(_exitData.prefabData);
+    }
 
-        this.targetArea = properties.targetArea;
-        this.hidden = properties.hidden;
-        this.targetCoords = {
-            row: properties.targetRow,
-            column: properties.targetColumn
-        };
+    get targetArea(): string {
+        return this._exitData.targetArea;
+    }
+
+    get hidden(): boolean {
+        return this._exitData.hidden;
+    }
+
+    get targetCoords(): ICoordinate {
+        return this._exitData.targetCoords;
     }
 
     update() {
-        this.game.physics.arcade.overlap(this.gameState.player, this, this.use, null, this);
+        this.game.physics.arcade.overlap(this.gamePlay.player, this, this.use, null, this);
     }
 
     use() {
-        if (!this.hidden && Utility.isOnTop(this.gameState.player.position, this.position, this.gameState.tileDimensions)) {
+        if (!this.hidden && Utility.isOnTop(this.gamePlay.player.position, this.position, this.gamePlay.tileDimensions)) {
             let currentState;
 
             currentState = this.game.state.getCurrentState();
 
-            Storage.savePlayerPosition(Utility.getPointFromCoord(this.targetCoords, this.gameState.tileDimensions));
+            Storage.savePlayerPosition(Utility.getPointFromCoord(this.targetCoords, this.gamePlay.tileDimensions));
 
-            this.gameState.leaveArea();
+            this.gamePlay.leaveArea();
             this.game.state.start('Boot', true, false, `data/area/area-${this.targetArea}-data.json`, 'Area');
         }
     }
