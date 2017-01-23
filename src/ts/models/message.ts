@@ -112,7 +112,7 @@ export default class Message {
         }
     }
 
-    static create(game, text, frame, key) {
+    static create(game: Phaser.Game, text: string[], frame?: number, key?: string) {
         let message;
 
         message = new this(game, text, frame, key);
