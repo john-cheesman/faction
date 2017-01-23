@@ -14,7 +14,6 @@ export default class Player extends Person {
     }
 
     public interactionTarget: any;
-    public reticule: Phaser.Sprite;
 
     render() {
         //this.gamePlay.game.debug.text(`position: ${Math.floor(this.position.x)}, ${Math.floor(this.position.y)}`, 32, 32);

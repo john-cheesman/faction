@@ -13,8 +13,9 @@ export default class PathFinderPlugin extends Phaser.Plugin {
     }
 
     public easy_star: EasyStar.js;
+    public tile_dimensions: number;
 
-    init(world_grid, acceptable_tiles, tile_dimensions) {
+    init(world_grid, acceptable_tiles, tile_dimensions: number) {
         let grid_row,
             grid_column,
             grid_indices;
@@ -37,7 +38,7 @@ export default class PathFinderPlugin extends Phaser.Plugin {
         this.tile_dimensions = tile_dimensions;
     }
 
-    findPath(origin, target, callback, context) {
+    findPath(origin: Phaser.Point, target: Phaser.Point, callback: any, context: any) {
         let origin_coord,
             target_coord;
 

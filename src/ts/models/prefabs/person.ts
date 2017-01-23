@@ -3,7 +3,7 @@ import Direction from '../../enums/direction';
 import IPerson from '../../interfaces/person.interface';
 import Prefab from '../prefab';
 import Inventory from '../inventory';
-import EquippableItem from '../items/equippable-item.item';
+import EquippableItem from '../items/equippable-item';
 import spriteFrames from '../../constants/sprite-frames';
 import animations from '../../constants/animations';
 
@@ -43,8 +43,9 @@ export default class Person extends Prefab {
     }
 
     public movementSpeed: number;
-    public path: number[];
+    public path: Phaser.Point[];
     public pathStep: number;
+    public reticule: Phaser.Sprite;
 
     get direction(): Direction {
         return this._personData.direction || 'Down';
@@ -63,8 +64,8 @@ export default class Person extends Prefab {
     }
 
     update() {
-        let nextPosition,
-            velocity;
+        let nextPosition: Phaser.Point,
+            velocity: Phaser.Point;
 
         if (this.path.length > 0) {
             nextPosition = this.path[this.pathStep];
@@ -104,7 +105,7 @@ export default class Person extends Prefab {
         }
     }
 
-    reachedTargetPosition(targetPosition) {
+    reachedTargetPosition(targetPosition: Phaser.Point) {
         let distance;
 
         distance = Phaser.Point.distance(this.position, targetPosition);
@@ -112,13 +113,13 @@ export default class Person extends Prefab {
         return distance < 1;
     }
 
-    moveTo(targetPosition) {
-        if (!this.path.length > 0) {
-            this.gameState.pathFinder.findPath(this.position, targetPosition, this.moveThroughPath, this);
+    moveTo(targetPosition: Phaser.Point) {
+        if (this.path.length <= 0) {
+            this.gamePlay.pathFinder.findPath(this.position, targetPosition, this.moveThroughPath, this);
         }
     }
 
-    moveThroughPath(path) {
+    moveThroughPath(path: Phaser.Point[]) {
         if (path !== null) {
             this.path = path;
             this.pathStep = 0;
@@ -127,10 +128,9 @@ export default class Person extends Prefab {
         else {
             this.path = [];
         }
-
     }
 
-    updateReticule(position) {
+    updateReticule(position: Phaser.Point) {
         if (this.reticule && position) {
             this.reticule.position = position;
             this.reticule.visible = true;

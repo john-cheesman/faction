@@ -104,10 +104,6 @@ export default class Area extends GamePlay {
 
         this.player = this.createObject(player);
 
-        this.tileDimensions = new Phaser.Point(this.map.tileWidth, this.map.tileHeight);
-
-        this.pathFinder = this.game.plugins.add(PathFinder, collisionLayerData, [-1], this.tileDimensions);
-
         this.layers['subGroundLayer'].inputEnabled = true;
         this.layers['subGroundLayer'].events.onInputDown.add(this.movePlayer, this);
 
