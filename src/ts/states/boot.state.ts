@@ -1,5 +1,5 @@
-import { dimensions } from '../constants/dimensions';
-import { colours } from '../constants/colours';
+import dimensions from '../constants/dimensions';
+import colours from '../constants/colours';
 
 export default class Boot extends Phaser.State {
     public dataFile: any;

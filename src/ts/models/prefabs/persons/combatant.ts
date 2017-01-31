@@ -11,16 +11,13 @@ import Equipment from '../../equipment';
 import equippableItems from '../../../constants/equippable-items';
 
 export default class Combatant extends Person {
-    private _equipment: Equipment;
-    private _baseStats: Stats;
+    constructor(public combatantData: ICombatant) {
+        super(combatantData.personData);
 
-    constructor(private _combatantData: ICombatant) {
-        super(_combatantData.personData);
+        this.equipment = new Equipment(combatantData.equipment);
+        this.baseStats = new Stats(combatantData.baseStats);
 
-        this._equipment = new Equipment(_combatantData.equipment);
-        this._baseStats = new Stats(_combatantData.baseStats);
-
-        console.log(`${this.name} xp: ${this.xp} baseStats: ${this._baseStats} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed} equipment: ${this.equipment}`);
+        console.log(`${this.name} xp: ${this.xp} baseStats: ${this.baseStats} level: ${this.level} xpForNextLevel: ${this.xpForNextLevel} strength: ${this.strength} vitality: ${this.vitality} agility: ${this.agility} intelligence: ${this.intelligence} hp: ${this.hp} attack: ${this.attack} defence: ${this.defence} evasion: ${this.evasion} accuracy: ${this.accuracy} speed: ${this.speed} equipment: ${this.equipment}`);
 
         console.log(EquipmentHelper.getAggregateStats(this.equipment));
 
@@ -29,63 +26,62 @@ export default class Combatant extends Person {
         console.log(EquipmentHelper.unequipItem('secondaryHand', this.equipment));
     }
 
-    get xp(): number {
-        return this._combatantData.xp;
+    public equipment: Equipment;
+    public baseStats: Stats;
+
+    get xp() {
+        return this.combatantData.xp;
     }
 
-    get level(): number {
+    get level() {
         return Experience.getLevelForXP(this.xp);
     }
 
-    get xpForNextLevel(): number {
+    get xpForNextLevel() {
         return Experience.getXPForLevel(this.level + 1);
     }
 
-    get strength(): number {
-        return this.level * ((this._baseStats.strength * 25.5) / 99);
+    get strength() {
+        return this.level * ((this.baseStats.strength * 25.5) / 99);
     }
 
-    get vitality(): number {
-        return this.level * ((this._baseStats.vitality * 25.5) / 99);
+    get vitality() {
+        return this.level * ((this.baseStats.vitality * 25.5) / 99);
     }
 
-    get agility(): number {
-        return this.level * ((this._baseStats.agility * 25.5) / 99);
+    get agility() {
+        return this.level * ((this.baseStats.agility * 25.5) / 99);
     }
 
-    get intelligence(): number {
-        return this.level * ((this._baseStats.intelligence * 25.5) / 99);
+    get intelligence() {
+        return this.level * ((this.baseStats.intelligence * 25.5) / 99);
     }
 
-    get hp(): number {
+    get hp() {
         return this.vitality * 4;
     }
 
-    get attack(): number {
+    get attack() {
         return this.strength + this.equipmentStats.attack;
     }
 
-    get defence(): number {
+    get defence() {
         return ((this.vitality + this.strength) / 2) + this.equipmentStats.defence;
     }
 
-    get evasion(): number {
+    get evasion() {
         return ((this.agility + this.intelligence) / 4) + this.equipmentStats.evasion;
     }
 
-    get accuracy(): number {
+    get accuracy() {
         return ((this.intelligence + this.vitality) / 2) + this.equipmentStats.accuracy;
     }
 
-    get speed(): number {
+    get speed() {
         return ((this.agility + this.vitality) / 2) + this.equipmentStats.speed;
     }
 
-    get equipment(): Equipment {
-        return this._equipment;
-    }
-
-    get equipmentStats(): DerivedStats {
-        return EquipmentHelper.getAggregateStats(this._equipment);
+    get equipmentStats() {
+        return EquipmentHelper.getAggregateStats(this.equipment);
     }
 }

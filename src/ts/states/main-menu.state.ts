@@ -1,13 +1,12 @@
-import Menu from '../models/menu';
-import Storage from '../helpers/storage';
-import Progress from '../models/progress';
-import { colours } from '../constants/colours';
-import { dimensions } from '../constants/dimensions';
-import { newGameProgress } from '../constants/new-game-progress';
+import IProgress from '../interfaces/progress.interface';
+import Storage from '../helpers/storage.helper';
+import colours from '../constants/colours';
+import dimensions from '../constants/dimensions';
+import newGameProgress from '../constants/new-game-progress';
 
 export default class MainMenu extends Phaser.State {
     create() {
-        let localProgress: Progress,
+        let localProgress: IProgress,
             menuItems,
             newGameLocalProgress;
 
@@ -23,31 +22,8 @@ export default class MainMenu extends Phaser.State {
 
         this.game.add.button(100, 100, 'uiSpritesheet', () => { this.game.state.start('Boot', true, false, 'data/area/area-1a-data.json', 'Area'); }, this, 1, 1, 1, 1);
 
-        menuItems = [
-            {
-                text: 'Start',
-                callback: () => {
-                    this.game.state.start('Boot', true, false, 'data/area/area-1a-data.json', 'Area');
-                }
-            }
-        ];
-
-        if (localProgress) {
-            menuItems.push({
-                text: 'Continue',
-                callback: () => {
-                    this.game.state.start('Boot', true, false, `data/area/${localProgress.area}-data.json`, 'Area');
-                }
-            });
+        if (!localProgress) {
+            Storage.saveLocalProgress(newGameProgress.area, newGameProgress.party);
         }
-        else {
-            newGameLocalProgress = new Progress(newGameProgress.area, newGameProgress.party);
-
-            Storage.saveLocalProgress(newGameLocalProgress);
-        }
-
-        this.menu = new Menu(this.game, (dimensions.tileSize / 2), (dimensions.tileSize * 5.5), menuItems);
-
-        this.menu.create();
     }
 }

@@ -1,3 +1,5 @@
+import Prefab from '../models/prefab';
+import IPrefabTypes from '../interfaces/prefab-types.interface';
 import IArea from '../interfaces/area.interface';
 import GamePlay from './game-play.state';
 import Person from '../models/prefabs/person';
@@ -13,7 +15,7 @@ import Progress from '../models/progress';
 import PathFinder from '../plugins/path-finder.plugin';
 import Utility from '../helpers/utility.helper';
 
-let prefabClasses: any;
+let prefabClasses: IPrefabTypes;
 
 prefabClasses = {
     Person: Person,
@@ -28,6 +30,7 @@ prefabClasses = {
 
 export default class Area extends GamePlay {
     public areaData: IArea;
+    public player: Player;
 
     init(areaData: any) {
         super.init(areaData.gamePlayData);
@@ -38,66 +41,35 @@ export default class Area extends GamePlay {
     }
 
     create() {
-        let groupName,
-            object,
-            objectLayer,
-            enemies,
-            enemy,
-            player,
+        let player,
             playerPosition,
             progress,
             collisionLayerData,
             tileDimensions;
 
-        this.layers = {};
 
-        this.map.layers.forEach((layer) => {
-            if (!layer.properties.top) {
-                this.layers[layer.name] = this.map.createLayer(layer.name);
+        this.areaData.prefabs.forEach((prefabData) => {
+            prefabData.y -= this.map.tileHeight;
+            this.createObject(prefabData);
+        });
 
-                if (layer.properties.collision === true) {
-                    this.map.setCollisionByExclusion([], true, this.layers[layer.name]);
-                    collisionLayerData = layer.data;
-                }
-            }
-        }, this);
+        // enemies = this.areaData.enemies;
 
-        this.layers[this.map.layer.name].resizeWorld();
+        // if (enemies) {
+        //     enemies.forEach((enemy) => {
+        //         enemy.properties.group = 'enemies';
+        //         enemy.type = 'Enemy';
 
-        this.groups = {};
-
-        this.areaData.groups.forEach((groupName) => {
-            this.groups[groupName] = this.game.world.addAt(new Phaser.Group(this.game, null, groupName, false, true, Phaser.Physics.ARCADE), 3);
-        }, this);
-
-        this.prefabs = {};
-
-        for (objectLayer in this.map.objects) {
-            if (this.map.objects.hasOwnProperty(objectLayer)) {
-                this.map.objects[objectLayer].forEach((object) => {
-                    object.y -= this.map.tileHeight;
-                    this.createObject(object);
-                }, this);
-            }
-        }
-
-        enemies = this.areaData.enemies;
-
-        if (enemies) {
-            enemies.forEach((enemy) => {
-                enemy.properties.group = 'enemies';
-                enemy.type = 'Enemy';
-
-                this.createObject(enemy);
-            });
-        }
+        //         this.createObject(enemy);
+        //     });
+        // }
 
         player = this.areaData.player;
         playerPosition = Storage.loadPlayerPosition();
 
         if (playerPosition) {
-            player.x = playerPosition.x;
-            player.y = playerPosition.y;
+            player.prefabData.spriteData.x = playerPosition.x;
+            player.prefabData.spriteData.y = playerPosition.y;
 
             Storage.clearPlayerPosition();
         }
@@ -131,14 +103,14 @@ export default class Area extends GamePlay {
         //Storage.saveParty(this.groups.party);
     }
 
-    createObject(objectData) {
+    createObject(objectData: any) {
         let prefab;
 
         if (prefabClasses.hasOwnProperty(objectData.type)) {
             prefab = new prefabClasses[objectData.type](this, objectData.name, objectData.x, objectData.y, objectData.properties, objectData.visible);
 
             if (objectData.properties.group) {
-                this.addObjectToGroup(prefab, objectData.properties.group);
+                this.addObjectToGroup(prefab, objectData.group);
             }
             else {
                 this.game.add.existing(prefab);
@@ -151,8 +123,8 @@ export default class Area extends GamePlay {
         return prefab;
     }
 
-    addObjectToGroup(prefab, group) {
-        if (this.groups.hasOwnProperty(group)) {
+    addObjectToGroup(prefab: Prefab, group: string) {
+        if (this.groups[group] !== null) {
             this.groups[group].add(prefab);
         }
         else {
@@ -161,7 +133,7 @@ export default class Area extends GamePlay {
     }
 
     update() {
-        this.game.physics.arcade.collide(this.player, this.layers.collision);
+        this.game.physics.arcade.collide(this.player, this.layers['collision']);
     }
 
     render() {

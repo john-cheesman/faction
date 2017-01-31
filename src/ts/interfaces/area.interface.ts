@@ -6,7 +6,8 @@ interface IArea {
     gamePlayData: IGamePlay,
     groups: string[],
     player: IPerson,
-    party: IParty
+    party: IParty,
+    prefabs: any[]
 }
 
 export default IArea

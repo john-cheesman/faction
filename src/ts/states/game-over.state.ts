@@ -1,11 +1,14 @@
 import Menu from '../models/menu';
-import Utility from '../helpers/utility';
-import { dimensions } from '../constants/dimensions';
-import { colours } from '../constants/colours';
+import Utility from '../helpers/utility.helper';
+import dimensions from '../constants/dimensions';
+import colours from '../constants/colours';
 
 export default class GameOver extends Phaser.State {
-    init(levelID) {
-        this.levelID = levelID;
+    public levelId: string;
+    public menu: Menu;
+
+    init(levelId: string) {
+        this.levelId = levelId;
     }
 
     create() {
@@ -22,7 +25,7 @@ export default class GameOver extends Phaser.State {
         menuOptions = [
             {
                 text: 'Replay',
-                targetState: `Level${this.levelID}`
+                targetState: `Level${this.levelId}`
             },
             {
                 text: 'Main menu',

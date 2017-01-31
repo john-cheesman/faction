@@ -1,3 +1,5 @@
+import IParty from '../interfaces/party.interface';
+import ICombatant from '../interfaces/combatant.interface';
 import IBattle from '../interfaces/battle.interface';
 import GamePlay from './game-play.state';
 import Combatant from '../models/prefabs/persons/combatant';
@@ -7,6 +9,8 @@ import newGameProgress from '../constants/new-game-progress';
 
 export default class Battle extends GamePlay {
     public battleData: IBattle;
+    public playerParty: Party;
+    public enemyParty: Party;
 
     init(battleData: any) {
         super.init(battleData.gamePlayData);
@@ -17,36 +21,30 @@ export default class Battle extends GamePlay {
     create() {
         let layer,
             enemyCombatant,
-            enemyCombatants,
-            playerPartyData,
+            enemyCombatants: Combatant[],
+            playerPartyData: IParty,
             playerCombatant,
-            playerCombatants;
+            playerCombatants: Combatant[];
 
         enemyCombatants = [];
         playerCombatants = [];
 
-        this.layers = {};
-
-        this.map.layers.forEach((layer) => {
-            this.layers[layer.name] = this.map.createLayer(layer.name);
-        }, this);
-
-        this.layers[this.map.layer.name].resizeWorld();
+        this.layers[0].resizeWorld();
 
         this.battleData.enemyParty.combatants.forEach((enemyCombatant) => {
             let combatant;
 
             enemyCombatant.properties.direction = 'left';
 
-            combatant = new Combatant(this, enemyCombatant.name, enemyCombatant.x, enemyCombatant.y, enemyCombatant.properties);
+            combatant = new Combatant(enemyCombatant);
 
             enemyCombatants.push(combatant);
             this.game.add.existing(combatant);
         }, this);
 
-        this.enemyParty = new Party(this.battleData.enemyParty.name, enemyCombatants, this.battleData.enemyParty.xpFactor);
+        this.enemyParty = new Party(this.battleData.enemyParty);
 
-        playerPartyData = Storage.loadParty();
+        playerPartyData = <IParty>Storage.loadParty();
 
         if (!playerPartyData) {
             playerPartyData = Storage.loadLocalProgress().party;
@@ -55,17 +53,17 @@ export default class Battle extends GamePlay {
         playerPartyData.combatants.forEach((playerCombatant) => {
             let combatant;
 
-            playerCombatant.properties.direction = 'right';
+            playerCombatant.personData.direction = 'Right';
 
-            combatant = new Combatant(this, playerCombatant.name, playerCombatant.x, playerCombatant.y, playerCombatant.properties);
+            combatant = new Combatant(playerCombatant);
 
-            combatant.setFollowTarget(enemyCombatants[0]);
+            //combatant.setFollowTarget(enemyCombatants[0]);
 
             playerCombatants.push(combatant);
             this.game.add.existing(combatant);
         });
 
-        this.playerParty = new Party(playerPartyData.name, playerCombatants, playerPartyData.xpFactor);
+        this.playerParty = new Party(playerPartyData);
 
         Storage.saveParty(this.playerParty);
     }

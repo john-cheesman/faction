@@ -1,8 +1,8 @@
-import Combatant from '../models/prefabs/persons/combatant.person';
+import ICombatant from './combatant.interface';
 
 interface IParty {
     name: string,
-    combatants: Combatant[],
+    combatants: ICombatant[],
     xpFactor: number
 }
 
